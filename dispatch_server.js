@@ -565,3 +565,5 @@ app.listen(port, () => {
 `);
     // open(`http://localhost:${port}`); // 브라우저 자동 실행
 });
+
+module.exports = app;
