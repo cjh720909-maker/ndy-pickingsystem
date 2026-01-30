@@ -1,0 +1,1733 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "windows"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model mms_log_202509 {
+  MSGKEY             Int
+  SUBJECT            String?   @db.VarChar(120)
+  PHONE              String    @db.VarChar(15)
+  CALLBACK           String    @db.VarChar(15)
+  STATUS             String    @default("0") @db.VarChar(2)
+  REQDATE            DateTime  @db.DateTime(0)
+  MSG                String?   @db.VarChar(4000)
+  FILE_CNT           Int       @default(0)
+  FILE_CNT_REAL      Int?
+  FILE_PATH1         String?   @db.VarChar(512)
+  FILE_PATH1_SIZ     Int?
+  FILE_PATH2         String?   @db.VarChar(512)
+  FILE_PATH2_SIZ     Int?
+  FILE_PATH3         String?   @db.VarChar(512)
+  FILE_PATH3_SIZ     Int?
+  FILE_PATH4         String?   @db.VarChar(512)
+  FILE_PATH4_SIZ     Int?
+  FILE_PATH5         String?   @db.VarChar(512)
+  FILE_PATH5_SIZ     Int?
+  EXPIRETIME         String    @default("43200") @db.VarChar(10)
+  SENTDATE           DateTime? @db.DateTime(0)
+  RSLTDATE           DateTime? @db.DateTime(0)
+  REPORTDATE         DateTime? @db.DateTime(0)
+  TERMINATEDDATE     DateTime? @db.DateTime(0)
+  RSLT               String?   @db.VarChar(4)
+  TYPE               String    @default("0") @db.VarChar(2)
+  TELCOINFO          String?   @db.VarChar(10)
+  ROUTE_ID           String?   @db.VarChar(20)
+  ID                 String?   @db.VarChar(20)
+  POST               String?   @db.VarChar(20)
+  ETC1               String?   @db.VarChar(64)
+  ETC2               String?   @db.VarChar(32)
+  ETC3               String?   @db.VarChar(32)
+  ETC4               Int?
+  MULTI_SEQ          String?   @db.VarChar(10)
+  TEMPLATE_KEY       String?   @db.VarChar(20)
+  BAR_CODE           String?   @db.VarChar(30)
+  BAR_CODE_MERGE_TXT String?   @db.VarChar(256)
+
+  @@index([PHONE], map: "MMS_LOG_202509_IDX2")
+  @@index([REQDATE, RSLT], map: "MMS_LOG_202509_IDX3")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model mms_log_202510 {
+  MSGKEY             Int
+  SUBJECT            String?   @db.VarChar(120)
+  PHONE              String    @db.VarChar(15)
+  CALLBACK           String    @db.VarChar(15)
+  STATUS             String    @default("0") @db.VarChar(2)
+  REQDATE            DateTime  @db.DateTime(0)
+  MSG                String?   @db.VarChar(4000)
+  FILE_CNT           Int       @default(0)
+  FILE_CNT_REAL      Int?
+  FILE_PATH1         String?   @db.VarChar(512)
+  FILE_PATH1_SIZ     Int?
+  FILE_PATH2         String?   @db.VarChar(512)
+  FILE_PATH2_SIZ     Int?
+  FILE_PATH3         String?   @db.VarChar(512)
+  FILE_PATH3_SIZ     Int?
+  FILE_PATH4         String?   @db.VarChar(512)
+  FILE_PATH4_SIZ     Int?
+  FILE_PATH5         String?   @db.VarChar(512)
+  FILE_PATH5_SIZ     Int?
+  EXPIRETIME         String    @default("43200") @db.VarChar(10)
+  SENTDATE           DateTime? @db.DateTime(0)
+  RSLTDATE           DateTime? @db.DateTime(0)
+  REPORTDATE         DateTime? @db.DateTime(0)
+  TERMINATEDDATE     DateTime? @db.DateTime(0)
+  RSLT               String?   @db.VarChar(4)
+  TYPE               String    @default("0") @db.VarChar(2)
+  TELCOINFO          String?   @db.VarChar(10)
+  ROUTE_ID           String?   @db.VarChar(20)
+  ID                 String?   @db.VarChar(20)
+  POST               String?   @db.VarChar(20)
+  ETC1               String?   @db.VarChar(64)
+  ETC2               String?   @db.VarChar(32)
+  ETC3               String?   @db.VarChar(32)
+  ETC4               Int?
+  MULTI_SEQ          String?   @db.VarChar(10)
+  TEMPLATE_KEY       String?   @db.VarChar(20)
+  BAR_CODE           String?   @db.VarChar(30)
+  BAR_CODE_MERGE_TXT String?   @db.VarChar(256)
+
+  @@index([PHONE], map: "MMS_LOG_202510_IDX2")
+  @@index([REQDATE, RSLT], map: "MMS_LOG_202510_IDX3")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model mms_log_202511 {
+  MSGKEY             Int
+  SUBJECT            String?   @db.VarChar(120)
+  PHONE              String    @db.VarChar(15)
+  CALLBACK           String    @db.VarChar(15)
+  STATUS             String    @default("0") @db.VarChar(2)
+  REQDATE            DateTime  @db.DateTime(0)
+  MSG                String?   @db.VarChar(4000)
+  FILE_CNT           Int       @default(0)
+  FILE_CNT_REAL      Int?
+  FILE_PATH1         String?   @db.VarChar(512)
+  FILE_PATH1_SIZ     Int?
+  FILE_PATH2         String?   @db.VarChar(512)
+  FILE_PATH2_SIZ     Int?
+  FILE_PATH3         String?   @db.VarChar(512)
+  FILE_PATH3_SIZ     Int?
+  FILE_PATH4         String?   @db.VarChar(512)
+  FILE_PATH4_SIZ     Int?
+  FILE_PATH5         String?   @db.VarChar(512)
+  FILE_PATH5_SIZ     Int?
+  EXPIRETIME         String    @default("43200") @db.VarChar(10)
+  SENTDATE           DateTime? @db.DateTime(0)
+  RSLTDATE           DateTime? @db.DateTime(0)
+  REPORTDATE         DateTime? @db.DateTime(0)
+  TERMINATEDDATE     DateTime? @db.DateTime(0)
+  RSLT               String?   @db.VarChar(4)
+  TYPE               String    @default("0") @db.VarChar(2)
+  TELCOINFO          String?   @db.VarChar(10)
+  ROUTE_ID           String?   @db.VarChar(20)
+  ID                 String?   @db.VarChar(20)
+  POST               String?   @db.VarChar(20)
+  ETC1               String?   @db.VarChar(64)
+  ETC2               String?   @db.VarChar(32)
+  ETC3               String?   @db.VarChar(32)
+  ETC4               Int?
+  MULTI_SEQ          String?   @db.VarChar(10)
+  TEMPLATE_KEY       String?   @db.VarChar(20)
+  BAR_CODE           String?   @db.VarChar(30)
+  BAR_CODE_MERGE_TXT String?   @db.VarChar(256)
+
+  @@index([PHONE], map: "MMS_LOG_202511_IDX2")
+  @@index([REQDATE, RSLT], map: "MMS_LOG_202511_IDX3")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model mms_log_202512 {
+  MSGKEY             Int
+  SUBJECT            String?   @db.VarChar(120)
+  PHONE              String    @db.VarChar(15)
+  CALLBACK           String    @db.VarChar(15)
+  STATUS             String    @default("0") @db.VarChar(2)
+  REQDATE            DateTime  @db.DateTime(0)
+  MSG                String?   @db.VarChar(4000)
+  FILE_CNT           Int       @default(0)
+  FILE_CNT_REAL      Int?
+  FILE_PATH1         String?   @db.VarChar(512)
+  FILE_PATH1_SIZ     Int?
+  FILE_PATH2         String?   @db.VarChar(512)
+  FILE_PATH2_SIZ     Int?
+  FILE_PATH3         String?   @db.VarChar(512)
+  FILE_PATH3_SIZ     Int?
+  FILE_PATH4         String?   @db.VarChar(512)
+  FILE_PATH4_SIZ     Int?
+  FILE_PATH5         String?   @db.VarChar(512)
+  FILE_PATH5_SIZ     Int?
+  EXPIRETIME         String    @default("43200") @db.VarChar(10)
+  SENTDATE           DateTime? @db.DateTime(0)
+  RSLTDATE           DateTime? @db.DateTime(0)
+  REPORTDATE         DateTime? @db.DateTime(0)
+  TERMINATEDDATE     DateTime? @db.DateTime(0)
+  RSLT               String?   @db.VarChar(4)
+  TYPE               String    @default("0") @db.VarChar(2)
+  TELCOINFO          String?   @db.VarChar(10)
+  ROUTE_ID           String?   @db.VarChar(20)
+  ID                 String?   @db.VarChar(20)
+  POST               String?   @db.VarChar(20)
+  ETC1               String?   @db.VarChar(64)
+  ETC2               String?   @db.VarChar(32)
+  ETC3               String?   @db.VarChar(32)
+  ETC4               Int?
+  MULTI_SEQ          String?   @db.VarChar(10)
+  TEMPLATE_KEY       String?   @db.VarChar(20)
+  BAR_CODE           String?   @db.VarChar(30)
+  BAR_CODE_MERGE_TXT String?   @db.VarChar(256)
+
+  @@index([PHONE], map: "MMS_LOG_202512_IDX2")
+  @@index([REQDATE, RSLT], map: "MMS_LOG_202512_IDX3")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model mms_log_202601 {
+  MSGKEY             Int
+  SUBJECT            String?   @db.VarChar(120)
+  PHONE              String    @db.VarChar(15)
+  CALLBACK           String    @db.VarChar(15)
+  STATUS             String    @default("0") @db.VarChar(2)
+  REQDATE            DateTime  @db.DateTime(0)
+  MSG                String?   @db.VarChar(4000)
+  FILE_CNT           Int       @default(0)
+  FILE_CNT_REAL      Int?
+  FILE_PATH1         String?   @db.VarChar(512)
+  FILE_PATH1_SIZ     Int?
+  FILE_PATH2         String?   @db.VarChar(512)
+  FILE_PATH2_SIZ     Int?
+  FILE_PATH3         String?   @db.VarChar(512)
+  FILE_PATH3_SIZ     Int?
+  FILE_PATH4         String?   @db.VarChar(512)
+  FILE_PATH4_SIZ     Int?
+  FILE_PATH5         String?   @db.VarChar(512)
+  FILE_PATH5_SIZ     Int?
+  EXPIRETIME         String    @default("43200") @db.VarChar(10)
+  SENTDATE           DateTime? @db.DateTime(0)
+  RSLTDATE           DateTime? @db.DateTime(0)
+  REPORTDATE         DateTime? @db.DateTime(0)
+  TERMINATEDDATE     DateTime? @db.DateTime(0)
+  RSLT               String?   @db.VarChar(4)
+  TYPE               String    @default("0") @db.VarChar(2)
+  TELCOINFO          String?   @db.VarChar(10)
+  ROUTE_ID           String?   @db.VarChar(20)
+  ID                 String?   @db.VarChar(20)
+  POST               String?   @db.VarChar(20)
+  ETC1               String?   @db.VarChar(64)
+  ETC2               String?   @db.VarChar(32)
+  ETC3               String?   @db.VarChar(32)
+  ETC4               Int?
+  MULTI_SEQ          String?   @db.VarChar(10)
+  TEMPLATE_KEY       String?   @db.VarChar(20)
+  BAR_CODE           String?   @db.VarChar(30)
+  BAR_CODE_MERGE_TXT String?   @db.VarChar(256)
+
+  @@index([PHONE], map: "MMS_LOG_202601_IDX2")
+  @@index([REQDATE, RSLT], map: "MMS_LOG_202601_IDX3")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model mms_log_202602 {
+  MSGKEY             Int
+  SUBJECT            String?   @db.VarChar(120)
+  PHONE              String    @db.VarChar(15)
+  CALLBACK           String    @db.VarChar(15)
+  STATUS             String    @default("0") @db.VarChar(2)
+  REQDATE            DateTime  @db.DateTime(0)
+  MSG                String?   @db.VarChar(4000)
+  FILE_CNT           Int       @default(0)
+  FILE_CNT_REAL      Int?
+  FILE_PATH1         String?   @db.VarChar(512)
+  FILE_PATH1_SIZ     Int?
+  FILE_PATH2         String?   @db.VarChar(512)
+  FILE_PATH2_SIZ     Int?
+  FILE_PATH3         String?   @db.VarChar(512)
+  FILE_PATH3_SIZ     Int?
+  FILE_PATH4         String?   @db.VarChar(512)
+  FILE_PATH4_SIZ     Int?
+  FILE_PATH5         String?   @db.VarChar(512)
+  FILE_PATH5_SIZ     Int?
+  EXPIRETIME         String    @default("43200") @db.VarChar(10)
+  SENTDATE           DateTime? @db.DateTime(0)
+  RSLTDATE           DateTime? @db.DateTime(0)
+  REPORTDATE         DateTime? @db.DateTime(0)
+  TERMINATEDDATE     DateTime? @db.DateTime(0)
+  RSLT               String?   @db.VarChar(4)
+  TYPE               String    @default("0") @db.VarChar(2)
+  TELCOINFO          String?   @db.VarChar(10)
+  ROUTE_ID           String?   @db.VarChar(20)
+  ID                 String?   @db.VarChar(20)
+  POST               String?   @db.VarChar(20)
+  ETC1               String?   @db.VarChar(64)
+  ETC2               String?   @db.VarChar(32)
+  ETC3               String?   @db.VarChar(32)
+  ETC4               Int?
+  MULTI_SEQ          String?   @db.VarChar(10)
+  TEMPLATE_KEY       String?   @db.VarChar(20)
+  BAR_CODE           String?   @db.VarChar(30)
+  BAR_CODE_MERGE_TXT String?   @db.VarChar(256)
+
+  @@index([PHONE], map: "MMS_LOG_202602_IDX2")
+  @@index([REQDATE, RSLT], map: "MMS_LOG_202602_IDX3")
+  @@ignore
+}
+
+model mms_msg {
+  MSGKEY             Int       @id @default(autoincrement())
+  SUBJECT            String?   @db.VarChar(120)
+  PHONE              String    @db.VarChar(15)
+  CALLBACK           String    @db.VarChar(15)
+  STATUS             String    @default("0") @db.VarChar(2)
+  REQDATE            DateTime  @db.DateTime(0)
+  MSG                String?   @db.VarChar(4000)
+  FILE_CNT           Int       @default(0)
+  FILE_CNT_REAL      Int?
+  FILE_PATH1         String?   @db.VarChar(512)
+  FILE_PATH1_SIZ     Int?
+  FILE_PATH2         String?   @db.VarChar(512)
+  FILE_PATH2_SIZ     Int?
+  FILE_PATH3         String?   @db.VarChar(512)
+  FILE_PATH3_SIZ     Int?
+  FILE_PATH4         String?   @db.VarChar(512)
+  FILE_PATH4_SIZ     Int?
+  FILE_PATH5         String?   @db.VarChar(512)
+  FILE_PATH5_SIZ     Int?
+  EXPIRETIME         String    @default("43200") @db.VarChar(10)
+  SENTDATE           DateTime? @db.DateTime(0)
+  RSLTDATE           DateTime? @db.DateTime(0)
+  REPORTDATE         DateTime? @db.DateTime(0)
+  TERMINATEDDATE     DateTime? @db.DateTime(0)
+  RSLT               String?   @db.VarChar(4)
+  TYPE               String    @default("0") @db.VarChar(2)
+  TELCOINFO          String?   @db.VarChar(10)
+  ROUTE_ID           String?   @db.VarChar(20)
+  ID                 String?   @db.VarChar(20)
+  POST               String?   @db.VarChar(20)
+  ETC1               String?   @db.VarChar(64)
+  ETC2               String?   @db.VarChar(32)
+  ETC3               String?   @db.VarChar(32)
+  ETC4               Int?
+  MULTI_SEQ          String?   @db.VarChar(10)
+  TEMPLATE_KEY       String?   @db.VarChar(20)
+  BAR_CODE           String?   @db.VarChar(30)
+  BAR_CODE_MERGE_TXT String?   @db.VarChar(256)
+
+  @@index([STATUS, REQDATE], map: "MMS_MSG_IDX2")
+  @@index([PHONE], map: "MMS_MSG_IDX3")
+  @@index([REQDATE, RSLT], map: "MMS_MSG_IDX4")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model sc_log_202509 {
+  TR_NUM          Int
+  TR_SENDDATE     DateTime? @db.DateTime(0)
+  TR_ID           String?   @db.VarChar(16)
+  TR_SENDSTAT     String    @default("0") @db.VarChar(1)
+  TR_RSLTSTAT     String?   @default("00") @db.VarChar(2)
+  TR_MSGTYPE      String    @default("0") @db.VarChar(1)
+  TR_PHONE        String    @default("") @db.VarChar(20)
+  TR_CALLBACK     String?   @db.VarChar(20)
+  TR_RSLTDATE     DateTime? @db.DateTime(0)
+  TR_MODIFIED     DateTime? @db.DateTime(0)
+  TR_MSG          String?   @db.VarChar(160)
+  TR_NET          String?   @db.VarChar(4)
+  TR_ETC1         String?   @db.VarChar(160)
+  TR_ETC2         String?   @db.VarChar(160)
+  TR_ETC3         String?   @db.VarChar(160)
+  TR_ETC4         String?   @db.VarChar(160)
+  TR_ETC5         String?   @db.VarChar(160)
+  TR_ETC6         String?   @db.VarChar(160)
+  TR_ROUTEID      String?   @db.VarChar(20)
+  TR_REALSENDDATE DateTime? @db.DateTime(0)
+
+  @@index([TR_PHONE], map: "SC_LOG_202509_IDX1")
+  @@index([TR_SENDDATE, TR_RSLTSTAT], map: "SC_LOG_202509_IDX2")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model sc_log_202510 {
+  TR_NUM          Int
+  TR_SENDDATE     DateTime? @db.DateTime(0)
+  TR_ID           String?   @db.VarChar(16)
+  TR_SENDSTAT     String    @default("0") @db.VarChar(1)
+  TR_RSLTSTAT     String?   @default("00") @db.VarChar(2)
+  TR_MSGTYPE      String    @default("0") @db.VarChar(1)
+  TR_PHONE        String    @default("") @db.VarChar(20)
+  TR_CALLBACK     String?   @db.VarChar(20)
+  TR_RSLTDATE     DateTime? @db.DateTime(0)
+  TR_MODIFIED     DateTime? @db.DateTime(0)
+  TR_MSG          String?   @db.VarChar(160)
+  TR_NET          String?   @db.VarChar(4)
+  TR_ETC1         String?   @db.VarChar(160)
+  TR_ETC2         String?   @db.VarChar(160)
+  TR_ETC3         String?   @db.VarChar(160)
+  TR_ETC4         String?   @db.VarChar(160)
+  TR_ETC5         String?   @db.VarChar(160)
+  TR_ETC6         String?   @db.VarChar(160)
+  TR_ROUTEID      String?   @db.VarChar(20)
+  TR_REALSENDDATE DateTime? @db.DateTime(0)
+
+  @@index([TR_PHONE], map: "SC_LOG_202510_IDX1")
+  @@index([TR_SENDDATE, TR_RSLTSTAT], map: "SC_LOG_202510_IDX2")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model sc_log_202511 {
+  TR_NUM          Int
+  TR_SENDDATE     DateTime? @db.DateTime(0)
+  TR_ID           String?   @db.VarChar(16)
+  TR_SENDSTAT     String    @default("0") @db.VarChar(1)
+  TR_RSLTSTAT     String?   @default("00") @db.VarChar(2)
+  TR_MSGTYPE      String    @default("0") @db.VarChar(1)
+  TR_PHONE        String    @default("") @db.VarChar(20)
+  TR_CALLBACK     String?   @db.VarChar(20)
+  TR_RSLTDATE     DateTime? @db.DateTime(0)
+  TR_MODIFIED     DateTime? @db.DateTime(0)
+  TR_MSG          String?   @db.VarChar(160)
+  TR_NET          String?   @db.VarChar(4)
+  TR_ETC1         String?   @db.VarChar(160)
+  TR_ETC2         String?   @db.VarChar(160)
+  TR_ETC3         String?   @db.VarChar(160)
+  TR_ETC4         String?   @db.VarChar(160)
+  TR_ETC5         String?   @db.VarChar(160)
+  TR_ETC6         String?   @db.VarChar(160)
+  TR_ROUTEID      String?   @db.VarChar(20)
+  TR_REALSENDDATE DateTime? @db.DateTime(0)
+
+  @@index([TR_PHONE], map: "SC_LOG_202511_IDX1")
+  @@index([TR_SENDDATE, TR_RSLTSTAT], map: "SC_LOG_202511_IDX2")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model sc_log_202512 {
+  TR_NUM          Int
+  TR_SENDDATE     DateTime? @db.DateTime(0)
+  TR_ID           String?   @db.VarChar(16)
+  TR_SENDSTAT     String    @default("0") @db.VarChar(1)
+  TR_RSLTSTAT     String?   @default("00") @db.VarChar(2)
+  TR_MSGTYPE      String    @default("0") @db.VarChar(1)
+  TR_PHONE        String    @default("") @db.VarChar(20)
+  TR_CALLBACK     String?   @db.VarChar(20)
+  TR_RSLTDATE     DateTime? @db.DateTime(0)
+  TR_MODIFIED     DateTime? @db.DateTime(0)
+  TR_MSG          String?   @db.VarChar(160)
+  TR_NET          String?   @db.VarChar(4)
+  TR_ETC1         String?   @db.VarChar(160)
+  TR_ETC2         String?   @db.VarChar(160)
+  TR_ETC3         String?   @db.VarChar(160)
+  TR_ETC4         String?   @db.VarChar(160)
+  TR_ETC5         String?   @db.VarChar(160)
+  TR_ETC6         String?   @db.VarChar(160)
+  TR_ROUTEID      String?   @db.VarChar(20)
+  TR_REALSENDDATE DateTime? @db.DateTime(0)
+
+  @@index([TR_PHONE], map: "SC_LOG_202512_IDX1")
+  @@index([TR_SENDDATE, TR_RSLTSTAT], map: "SC_LOG_202512_IDX2")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model sc_log_202601 {
+  TR_NUM          Int
+  TR_SENDDATE     DateTime? @db.DateTime(0)
+  TR_ID           String?   @db.VarChar(16)
+  TR_SENDSTAT     String    @default("0") @db.VarChar(1)
+  TR_RSLTSTAT     String?   @default("00") @db.VarChar(2)
+  TR_MSGTYPE      String    @default("0") @db.VarChar(1)
+  TR_PHONE        String    @default("") @db.VarChar(20)
+  TR_CALLBACK     String?   @db.VarChar(20)
+  TR_RSLTDATE     DateTime? @db.DateTime(0)
+  TR_MODIFIED     DateTime? @db.DateTime(0)
+  TR_MSG          String?   @db.VarChar(160)
+  TR_NET          String?   @db.VarChar(4)
+  TR_ETC1         String?   @db.VarChar(160)
+  TR_ETC2         String?   @db.VarChar(160)
+  TR_ETC3         String?   @db.VarChar(160)
+  TR_ETC4         String?   @db.VarChar(160)
+  TR_ETC5         String?   @db.VarChar(160)
+  TR_ETC6         String?   @db.VarChar(160)
+  TR_ROUTEID      String?   @db.VarChar(20)
+  TR_REALSENDDATE DateTime? @db.DateTime(0)
+
+  @@index([TR_PHONE], map: "SC_LOG_202601_IDX1")
+  @@index([TR_SENDDATE, TR_RSLTSTAT], map: "SC_LOG_202601_IDX2")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model sc_log_202602 {
+  TR_NUM          Int
+  TR_SENDDATE     DateTime? @db.DateTime(0)
+  TR_ID           String?   @db.VarChar(16)
+  TR_SENDSTAT     String    @default("0") @db.VarChar(1)
+  TR_RSLTSTAT     String?   @default("00") @db.VarChar(2)
+  TR_MSGTYPE      String    @default("0") @db.VarChar(1)
+  TR_PHONE        String    @default("") @db.VarChar(20)
+  TR_CALLBACK     String?   @db.VarChar(20)
+  TR_RSLTDATE     DateTime? @db.DateTime(0)
+  TR_MODIFIED     DateTime? @db.DateTime(0)
+  TR_MSG          String?   @db.VarChar(160)
+  TR_NET          String?   @db.VarChar(4)
+  TR_ETC1         String?   @db.VarChar(160)
+  TR_ETC2         String?   @db.VarChar(160)
+  TR_ETC3         String?   @db.VarChar(160)
+  TR_ETC4         String?   @db.VarChar(160)
+  TR_ETC5         String?   @db.VarChar(160)
+  TR_ETC6         String?   @db.VarChar(160)
+  TR_ROUTEID      String?   @db.VarChar(20)
+  TR_REALSENDDATE DateTime? @db.DateTime(0)
+
+  @@index([TR_PHONE], map: "SC_LOG_202602_IDX1")
+  @@index([TR_SENDDATE, TR_RSLTSTAT], map: "SC_LOG_202602_IDX2")
+  @@ignore
+}
+
+model sc_tran {
+  TR_NUM          Int       @id @default(autoincrement())
+  TR_SENDDATE     DateTime? @db.DateTime(0)
+  TR_ID           String?   @db.VarChar(16)
+  TR_SENDSTAT     String    @default("0") @db.VarChar(1)
+  TR_RSLTSTAT     String?   @default("00") @db.VarChar(2)
+  TR_MSGTYPE      String    @default("0") @db.VarChar(1)
+  TR_PHONE        String    @default("") @db.VarChar(20)
+  TR_CALLBACK     String?   @db.VarChar(20)
+  TR_RSLTDATE     DateTime? @db.DateTime(0)
+  TR_MODIFIED     DateTime? @db.DateTime(0)
+  TR_MSG          String?   @db.VarChar(160)
+  TR_NET          String?   @db.VarChar(4)
+  TR_ETC1         String?   @db.VarChar(160)
+  TR_ETC2         String?   @db.VarChar(160)
+  TR_ETC3         String?   @db.VarChar(160)
+  TR_ETC4         String?   @db.VarChar(160)
+  TR_ETC5         String?   @db.VarChar(160)
+  TR_ETC6         String?   @db.VarChar(160)
+  TR_ROUTEID      String?   @db.VarChar(20)
+  TR_REALSENDDATE DateTime? @db.DateTime(0)
+
+  @@index([TR_SENDSTAT, TR_SENDDATE], map: "SC_TRAN_IDX1")
+  @@index([TR_PHONE], map: "SC_TRAN_IDX2")
+  @@index([TR_SENDDATE, TR_RSLTSTAT], map: "SC_TRAN_IDX3")
+}
+
+model sc_tran_test {
+  TR_NUM          Int       @id @default(autoincrement())
+  TR_SENDDATE     DateTime? @db.DateTime(0)
+  TR_ID           String?   @db.VarChar(16)
+  TR_SENDSTAT     String    @default("0") @db.VarChar(1)
+  TR_RSLTSTAT     String?   @default("00") @db.VarChar(2)
+  TR_MSGTYPE      String    @default("0") @db.VarChar(1)
+  TR_PHONE        String    @default("") @db.VarChar(20)
+  TR_CALLBACK     String?   @db.VarChar(20)
+  TR_RSLTDATE     DateTime? @db.DateTime(0)
+  TR_MODIFIED     DateTime? @db.DateTime(0)
+  TR_MSG          String?   @db.VarChar(160)
+  TR_NET          String?   @db.VarChar(4)
+  TR_ETC1         String?   @db.VarChar(160)
+  TR_ETC2         String?   @db.VarChar(160)
+  TR_ETC3         String?   @db.VarChar(160)
+  TR_ETC4         String?   @db.VarChar(160)
+  TR_ETC5         String?   @db.VarChar(160)
+  TR_ETC6         String?   @db.VarChar(160)
+  TR_ROUTEID      String?   @db.VarChar(20)
+  TR_REALSENDDATE DateTime? @db.DateTime(0)
+
+  @@index([TR_SENDSTAT, TR_SENDDATE], map: "SC_TRAN_TEST_IDX1")
+  @@index([TR_PHONE], map: "SC_TRAN_TEST_IDX2")
+  @@index([TR_SENDDATE, TR_RSLTSTAT], map: "SC_TRAN_TEST_IDX3")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_balju {
+  B_IDX            Int       @id @unique(map: "B_IDX") @default(autoincrement()) @db.UnsignedInt
+  CB_IDX           Int?
+  CB_IDX_ORI       Int?
+  B_DATE           String?   @db.VarChar(10)
+  B_C_NAME_ORI     String?   @db.VarChar(80)
+  B_C_NAME         String    @db.VarChar(80)
+  B_C_CODE         String?   @db.VarChar(40)
+  B_C_PAN_NAME_ORI String?   @db.VarChar(80)
+  B_C_PAN_NAME     String?   @db.VarChar(80)
+  B_NAP_DIV_ORI    String?   @db.VarChar(20)
+  B_NAP_DIV        String?   @db.VarChar(20)
+  B_P_NO           String?   @db.VarChar(20)
+  B_P_NAME         String?   @db.VarChar(80)
+  B_DAN            Int       @default(0)
+  B_VAT_DIV        String?   @db.VarChar(10)
+  B_KG             Decimal   @default(0.00) @db.Decimal(11, 2)
+  B_IN_QTY         Decimal   @default(0.0) @db.Decimal(11, 1)
+  B_QTY            Int       @default(0)
+  B_PKG            String?   @db.VarChar(10)
+  B_NAP_NO         String?   @db.VarChar(20)
+  B_ORDER_NO       String?   @db.VarChar(20)
+  B_MEMO           String?   @db.VarChar(80)
+  B_EDT_E_NAME     String?   @db.VarChar(20)
+  C_NAME           String?   @db.VarChar(50)
+  B_EDT_DATETIME   DateTime? @db.DateTime(0)
+  CB_NAME          String?   @db.VarChar(80)
+  CB_DRIVER        String?   @db.VarChar(40)
+  CB_DIV_CUST      String?   @db.VarChar(20)
+  CB_ADDRESS       String?   @db.VarChar(200)
+  CB_PHONE         String?   @db.VarChar(40)
+  CB_HP            String?   @db.VarChar(40)
+  CB_BIND          String?   @db.VarChar(80)
+  CB_CODE          String?   @db.VarChar(40)
+  O_IDX            Int?
+  B_EX_SEQ         String?   @default("0") @db.VarChar(20)
+  O_QTY            Int       @default(0)
+  B_IN_CONFIRM     String    @default("N") @db.Char(1)
+  B_PICK_DONE      String    @default("N") @db.Char(1)
+  B_GUM_DONE       String    @default("N") @db.Char(1)
+  B_GUM_DATE       DateTime? @db.DateTime(0)
+  B_GUM_E_NAME     String?   @db.VarChar(20)
+  B_QTY_DAS_STCOK  Int       @default(0)
+
+  @@index([B_DATE, CB_IDX, B_P_NO], map: "B_DATE")
+  @@index([B_P_NO, C_NAME], map: "B_P_NO")
+  @@index([O_IDX], map: "O_IDX")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_balju_pre {
+  B_IDX            Int       @id @unique(map: "B_IDX") @default(autoincrement()) @db.UnsignedInt
+  CB_IDX           Int?
+  CB_IDX_ORI       Int?
+  B_DATE           String?   @db.VarChar(10)
+  B_C_NAME_ORI     String?   @db.VarChar(80)
+  B_C_NAME         String    @db.VarChar(80)
+  B_C_CODE         String?   @db.VarChar(40)
+  B_C_PAN_NAME_ORI String?   @db.VarChar(80)
+  B_C_PAN_NAME     String?   @db.VarChar(80)
+  B_NAP_DIV_ORI    String?   @db.VarChar(20)
+  B_NAP_DIV        String?   @db.VarChar(20)
+  B_P_NO           String?   @db.VarChar(20)
+  B_P_NAME         String?   @db.VarChar(80)
+  B_DAN            Int       @default(0)
+  B_VAT_DIV        String?   @db.VarChar(10)
+  B_KG             Decimal   @default(0.00) @db.Decimal(11, 2)
+  B_IN_QTY         Decimal   @default(0.0) @db.Decimal(11, 1)
+  B_QTY            Int       @default(0)
+  B_PKG            String?   @db.VarChar(10)
+  B_NAP_NO         String?   @db.VarChar(20)
+  B_ORDER_NO       String?   @db.VarChar(20)
+  B_MEMO           String?   @db.VarChar(80)
+  B_EDT_E_NAME     String?   @db.VarChar(20)
+  C_NAME           String?   @db.VarChar(50)
+  B_EDT_DATETIME   DateTime? @db.DateTime(0)
+  CB_NAME          String?   @db.VarChar(80)
+  CB_DRIVER        String?   @db.VarChar(40)
+  CB_DIV_CUST      String?   @db.VarChar(20)
+  CB_ADDRESS       String?   @db.VarChar(200)
+  CB_PHONE         String?   @db.VarChar(20)
+  CB_HP            String?   @db.VarChar(30)
+  CB_BIND          String?   @db.VarChar(80)
+  CB_CODE          String?   @db.VarChar(20)
+  O_IDX            Int?
+  B_EX_SEQ         String?   @default("0") @db.VarChar(20)
+  B_IN_CONFIRM     String    @default("N") @db.Char(1)
+  I_QTY            Int       @default(0)
+
+  @@index([B_DATE, CB_IDX, B_P_NO], map: "B_DATE")
+  @@index([O_IDX], map: "O_IDX")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_banpum {
+  B_IDX     Int     @id @unique(map: "B_IDX") @default(autoincrement()) @db.UnsignedInt
+  E_NAME    String? @db.VarChar(20)
+  B_DATE_IN String? @db.VarChar(10)
+  B_CONFIRM String  @default("N") @db.Char(1)
+  B_C_NAME  String? @db.VarChar(80)
+  B_C_CODE  String? @db.VarChar(20)
+  B_QTY     Int     @default(0)
+  P_NAME    String? @db.VarChar(80)
+  B_MEMO    String? @db.VarChar(200)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_banpum_bill {
+  BB_IDX     Int     @id @unique(map: "BB_IDX") @default(autoincrement()) @db.UnsignedInt
+  B_IDX      Int?
+  E_NAME     String? @db.VarChar(20)
+  CB_DRIVER  String? @db.VarChar(20)
+  BB_SEQ     String? @db.VarChar(20)
+  B_DATE_OUT String? @db.VarChar(10)
+
+  @@index([B_IDX], map: "B_IDX")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_bo_stock {
+  B_IDX      Int     @id @unique(map: "B_IDX") @default(autoincrement()) @db.UnsignedInt
+  E_NAME     String? @db.VarChar(20)
+  B_DATE_IN  String? @db.VarChar(10)
+  B_CENTER   String? @db.VarChar(40)
+  B_RESULT   String? @db.VarChar(40)
+  P_CODE     String? @db.VarChar(20)
+  P_NAME     String? @db.VarChar(80)
+  B_QTY      Int     @default(0)
+  B_IN_QTY   Int     @default(0)
+  B_DAN      Int     @default(0)
+  B_MEMO     String? @db.VarChar(200)
+  B_CONFIRM  String  @default("N") @db.Char(1)
+  B_MICHUL   String  @default("N") @db.Char(1)
+  B_BYUN     String  @default("N") @db.Char(1)
+  P_GROUP    String? @db.VarChar(20)
+  B_C_NAME   String? @db.VarChar(80)
+  B_C_CODE   String? @db.VarChar(20)
+  B_C_DRIVER String? @db.VarChar(40)
+  B_MAGAM    String  @default("N") @db.Char(1)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_car {
+  CA_IDX        Int     @id @unique(map: "CA_IDX") @default(autoincrement()) @db.UnsignedInt
+  CB_DRIVER     String? @db.VarChar(20)
+  CA_NAME       String? @db.VarChar(20)
+  CA_HP         String? @db.VarChar(20)
+  CA_NO         String? @db.VarChar(20)
+  CA_KG         Decimal @default(0.0) @db.Decimal(11, 1)
+  CA_MEMO       String? @db.VarChar(200)
+  CA_DOCKNO     String  @default("'") @db.VarChar(10)
+  CA_NOPRINT    String  @default("N") @db.Char(1)
+  CA_NOPRINT1   String  @default("N") @db.Char(1)
+  CA_NOPRINT2   String  @default("N") @db.Char(1)
+  CA_DAS_NUM_1  String? @db.VarChar(10)
+  CA_DAS_NUM_C1 String? @default("00") @db.Char(2)
+  CA_DAS_NUM_2  String? @db.VarChar(10)
+  CA_DAS_NUM_C2 String  @default("00") @db.Char(2)
+  CA_DAS_NUM_3  String? @db.VarChar(10)
+  CA_DAS_NUM_C3 String  @default("00") @db.Char(2)
+  CA_GUN        String? @db.VarChar(40)
+  CA_IS_SMS     String  @default("N") @db.Char(1)
+
+  @@index([CB_DRIVER], map: "CB_DRIVER")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_car_in {
+  CI_IDX  Int     @id @unique(map: "CI_IDX") @default(autoincrement()) @db.UnsignedInt
+  CI_DATE String? @db.VarChar(10)
+  CI_0101 String? @db.VarChar(5)
+  CI_0102 String? @db.VarChar(5)
+  CI_0201 String? @db.VarChar(5)
+  CI_0202 String? @db.VarChar(5)
+  CI_0203 String? @db.VarChar(5)
+  CI_0204 String? @db.VarChar(5)
+  CI_0301 String? @db.VarChar(5)
+  CI_0302 String? @db.VarChar(5)
+  CI_0303 String? @db.VarChar(5)
+  CI_0401 String? @db.VarChar(5)
+  CI_0402 String? @db.VarChar(5)
+  CI_0403 String? @db.VarChar(5)
+  CI_0501 String? @db.VarChar(5)
+  CI_0502 String? @db.VarChar(5)
+  CI_0503 String? @db.VarChar(5)
+  CI_0504 String? @db.VarChar(5)
+  CI_0505 String? @db.VarChar(5)
+  CI_0506 String? @db.VarChar(5)
+  CI_0507 String? @db.VarChar(5)
+  CI_0508 String? @db.VarChar(5)
+  CI_0509 String? @db.VarChar(5)
+  CI_0510 String? @db.VarChar(5)
+  CI_0511 String? @db.VarChar(5)
+  CI_0512 String? @db.VarChar(5)
+  CI_0601 String? @db.VarChar(5)
+  CI_0602 String? @db.VarChar(5)
+  CI_0603 String? @db.VarChar(5)
+  CI_0701 String? @db.VarChar(5)
+  CI_0702 String? @db.VarChar(5)
+  CI_0703 String? @db.VarChar(5)
+
+  @@index([CI_DATE], map: "CI_DATE")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_code_340 {
+  CD_IDX     Int     @id @unique(map: "CD_IDX") @default(autoincrement()) @db.UnsignedInt
+  CD_GROUP   String? @db.VarChar(40)
+  P_DIV_PICK String? @db.VarChar(40)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_code_basic {
+  C_IDX    Int     @id @default(autoincrement()) @db.UnsignedInt
+  C_DIV    String? @db.VarChar(20)
+  C_NAME   String? @db.VarChar(50)
+  C_PYO    String? @db.VarChar(20)
+  C_IS_DAS String  @default("Y") @db.Char(1)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_conv_c_name {
+  CVC_IDX     Int     @id @unique(map: "CVC_IDX") @default(autoincrement()) @db.UnsignedInt
+  C_NAME_IN   String? @db.VarChar(80)
+  C_NAME_OUT  String? @db.VarChar(80)
+  P_DIV_BAS   String? @db.VarChar(20)
+  CB_CODE_IN  String? @db.VarChar(20)
+  CB_CODE_OUT String? @db.VarChar(20)
+
+  @@index([C_NAME_IN], map: "C_NAME_IN")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_cust {
+  C_IDX        Int     @id @default(autoincrement()) @db.UnsignedInt
+  C_NAME       String? @db.VarChar(50)
+  C_SANO       String? @db.VarChar(20)
+  C_ADDRESS    String? @db.VarChar(100)
+  C_CEO        String? @db.VarChar(40)
+  C_IMG        Bytes?
+  CB_DIV_CUST  String? @db.VarChar(40)
+  C_PRINT_DIV  String  @default("Ç¥ÁØ") @db.VarChar(20)
+  C_TEL        String? @db.VarChar(20)
+  C_MEMO       String? @db.VarChar(200)
+  C_ID         String? @db.VarChar(30)
+  C_PASS       String? @db.VarChar(40)
+  C_J_BOX      Decimal @default(0.0) @db.Decimal(11, 1)
+  C_J_KG       Decimal @default(0.0) @db.Decimal(11, 1)
+  C_J_KUM      Decimal @default(0.0) @db.Decimal(11, 1)
+  C_J_FIX      Decimal @default(0.0) @db.Decimal(11, 1)
+  C_J_FIX_YONG Int     @default(0)
+  C_J_FIX_CHA  Int     @default(0)
+  C_DAS_NUM    String  @default("¿ÀÀü") @db.VarChar(10)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_cust_bae {
+  CB_IDX       Int     @id @unique(map: "CB_IDX") @default(autoincrement()) @db.UnsignedInt
+  CB_NAME      String? @db.VarChar(80)
+  CB_DRIVER    String? @db.VarChar(20)
+  CB_DIV_CUST  String? @db.VarChar(10)
+  CB_ADDRESS   String? @db.VarChar(200)
+  CB_PHONE     String? @db.VarChar(40)
+  CB_HP        String? @db.VarChar(30)
+  CB_BIND      String? @db.VarChar(80)
+  CB_MEMO      String? @db.Text
+  CB_CODE      String? @db.VarChar(80)
+  CB_DAMDANG   String? @db.VarChar(20)
+  CB_HIDE_DAN  String  @default("N") @db.Char(1)
+  CB_ORDER_SEQ Int     @default(1)
+  CB_IS_SMS    String  @default("N") @db.Char(1)
+  CB_GONG      String? @db.VarChar(40)
+  CB_CODE_PAN  String? @default("") @db.VarChar(40)
+  CB_NAME_PAN  String? @default("") @db.VarChar(80)
+
+  @@index([CB_DIV_CUST, CB_CODE], map: "CB_DIV_CUST")
+  @@index([CB_NAME, CB_DRIVER, CB_DIV_CUST], map: "CB_NAME")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_cust_bae_back {
+  CB_IDX      Int     @id @unique(map: "CB_IDX") @default(autoincrement()) @db.UnsignedInt
+  CB_NAME     String? @db.VarChar(80)
+  CB_DRIVER   String? @db.VarChar(20)
+  CB_DIV_CUST String? @db.VarChar(10)
+  CB_ADDRESS  String? @db.VarChar(200)
+  CB_PHONE    String? @db.VarChar(20)
+  CB_HP       String? @db.VarChar(30)
+  CB_BIND     String? @db.VarChar(80)
+  CB_MEMO     String? @db.Text
+  CB_CODE     String? @db.VarChar(80)
+  CB_DAMDANG  String? @db.VarChar(20)
+
+  @@index([CB_DIV_CUST, CB_CODE], map: "CB_DIV_CUST")
+  @@index([CB_NAME, CB_DRIVER, CB_DIV_CUST], map: "CB_NAME")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_cust_bae_excel {
+  EX_CB_IDX      Int     @id @unique(map: "EX_CB_IDX") @default(autoincrement()) @db.UnsignedInt
+  EX_CB_NAME     String? @db.VarChar(80)
+  EX_CB_DRIVER   String? @db.VarChar(20)
+  EX_CB_DIV_CUST String? @db.VarChar(10)
+  EX_CB_ADDRESS  String? @db.VarChar(200)
+  EX_CB_PHONE    String? @db.VarChar(20)
+  EX_CB_HP       String? @db.VarChar(30)
+  EX_CB_BIND     String? @db.VarChar(80)
+  EX_CB_MEMO     String? @db.Text
+  EX_CB_CODE     String? @db.VarChar(40)
+  EX_MAC         String? @db.VarChar(60)
+
+  @@index([EX_CB_CODE], map: "EX_CB_CODE")
+  @@index([EX_MAC], map: "EX_MAC")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_das_from {
+  DF_IDX      Int       @id @unique(map: "DF_IDX") @default(autoincrement()) @db.UnsignedInt
+  DT_IDX      Int?
+  E_NAME      String?   @db.VarChar(20)
+  DF_QTY      Int       @default(0)
+  DF_DATETIME DateTime? @db.DateTime(0)
+  B_DATE      String?   @db.VarChar(10)
+  DT_SEQ      Int?
+
+  @@index([B_DATE, DT_SEQ], map: "B_DATE")
+  @@index([DT_IDX], map: "DT_IDX")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_das_loc {
+  IDX   Int     @id @unique(map: "IDX") @default(autoincrement())
+  L_DAS String? @db.Char(6)
+  L_USE String? @default("N") @db.Char(1)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_das_to {
+  DT_IDX       Int     @id @unique(map: "DT_IDX") @default(autoincrement()) @db.UnsignedInt
+  B_DATE       String? @db.VarChar(10)
+  DT_SEQ       Int     @default(1)
+  CB_DRIVER    String? @db.VarChar(20)
+  B_P_NO       String? @db.VarChar(20)
+  B_P_NAME     String? @db.VarChar(80)
+  P_BARCODE    String? @db.VarChar(20)
+  P_BARCODE2   String? @db.VarChar(20)
+  P_IPSU       Int     @default(1)
+  B_QTY        Int     @default(0)
+  B_QTY_BOX    Int     @default(0)
+  B_QTY_EA     Int     @default(0)
+  DT_LOC_BLOCK String? @db.VarChar(10)
+  DT_LOC_CELL  String? @db.VarChar(10)
+  C_NAME       String? @db.VarChar(20)
+  CA_DOCKNO    String? @db.VarChar(10)
+  DT_DIV       String  @default("ÀÏ¹Ý") @db.VarChar(4)
+
+  @@index([B_DATE, C_NAME], map: "B_DATE")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_employ {
+  E_IDX   Int     @id @default(autoincrement()) @db.UnsignedInt
+  E_SABUN String? @db.VarChar(20)
+  E_PASS  String? @db.VarChar(20)
+  E_NAME  String? @db.VarChar(20)
+  E_PO    Int     @default(0) @db.UnsignedInt
+  E_DEL   String  @default("N") @db.Char(1)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_employ_menu {
+  EM_IDX         Int     @id @unique(map: "EM_IDX") @default(autoincrement()) @db.UnsignedInt
+  E_IDX          Int?
+  MC_WINDOW_NAME String? @db.VarChar(40)
+  EM_POWER       Int     @default(1)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_excel_in {
+  EX_IDX       Int     @id @unique(map: "EX_IDX") @default(autoincrement()) @db.UnsignedInt
+  EX_MAC       String? @db.VarChar(40)
+  EX_DATE      String? @db.VarChar(10)
+  EX_CUST_CODE String? @db.VarChar(40)
+  EX_CUST_NAME String? @db.VarChar(80)
+  EX_P_CODE    String? @db.VarChar(20)
+  EX_P_NAME    String? @db.VarChar(80)
+  EX_I_QTY     Int     @default(0)
+  EX_P_GROUP   String? @db.VarChar(20)
+  EX_I_MEMO    String? @db.VarChar(100)
+
+  @@index([EX_P_CODE, EX_P_GROUP], map: "EX_P_CODE")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_excel_out {
+  EX_IDX        Int     @id @unique(map: "EX_IDX") @default(autoincrement()) @db.UnsignedInt
+  EX_MAC        String? @db.VarChar(40)
+  EX_DATE       String? @db.VarChar(10)
+  EX_CUST_CODE  String? @db.VarChar(40)
+  EX_CUST_NAME  String? @db.VarChar(80)
+  EX_NAP_DIV    String? @db.VarChar(5)
+  EX_P_CODE     String? @db.VarChar(20)
+  EX_P_NAME     String? @db.VarChar(80)
+  EX_O_QTY      Int     @default(0)
+  EX_O_DAN      Int
+  EX_VAT_DIV    String  @default("1") @db.Char(1)
+  EX_O_MEMO     String? @db.VarChar(100)
+  EX_C_NAME     String? @db.VarChar(50)
+  EX_O_JUNG_DIV String? @db.VarChar(20)
+  EX_O_MEMO2    String? @db.VarChar(100)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_excel_tmp {
+  EX_IDX            Int     @id @unique(map: "EX_IDX") @default(autoincrement()) @db.UnsignedInt
+  EX_MAC            String? @db.VarChar(40)
+  EX_DATE           String? @db.VarChar(10)
+  EX_C_NAME         String  @db.VarChar(80)
+  EX_C_NAME_ORI     String? @db.VarChar(80)
+  EX_C_CODE         String? @db.VarChar(40)
+  EX_C_PAN_NAME     String? @db.VarChar(80)
+  EX_C_PAN_NAME_ORI String? @db.VarChar(80)
+  EX_NAP_DIV        String? @db.VarChar(20)
+  EX_NAP_DIV_ORI    String? @db.VarChar(20)
+  EX_P_NO           String? @db.VarChar(20)
+  EX_P_NAME         String? @db.VarChar(80)
+  EX_DAN            Int     @default(0)
+  EX_VAT_DIV        String? @db.VarChar(10)
+  EX_KG             Decimal @default(0.00) @db.Decimal(11, 2)
+  EX_IN_QTY         Decimal @default(0.0) @db.Decimal(11, 1)
+  EX_QTY            Int     @default(0)
+  EX_PKG            String? @db.VarChar(10)
+  EX_NAP_NO         String? @db.VarChar(20)
+  EX_ORDER_NO       String? @db.VarChar(20)
+  EX_MEMO           String? @db.VarChar(80)
+  EX_IPSU           Int     @default(0)
+  EX_KIHAN          String? @db.VarChar(10)
+  EX_CUST_NAME      String? @db.VarChar(50)
+
+  @@index([EX_C_NAME], map: "EX_C_NAME")
+  @@index([EX_P_NAME], map: "EX_P_NAME")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_excel_tmp_tr {
+  EX_IDX       Int     @id @unique(map: "EX_IDX") @default(autoincrement()) @db.UnsignedInt
+  EX_MAC       String? @db.VarChar(40)
+  EX_DATE      String? @db.VarChar(10)
+  EX_C_CODE    String? @db.VarChar(80)
+  EX_C_NAME    String  @db.VarChar(80)
+  EX_P_NO      String? @db.VarChar(20)
+  EX_P_NAME    String? @db.VarChar(80)
+  EX_QTY       Int     @default(0)
+  EX_ORDER_NO  String? @db.VarChar(20)
+  EX_MEMO      String? @db.VarChar(80)
+  EX_CUST_NAME String? @db.VarChar(50)
+  EX_P_DAN     Int     @default(0)
+
+  @@index([EX_C_NAME], map: "EX_C_NAME")
+  @@index([EX_P_NAME], map: "EX_P_NAME")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_frez {
+  F_IDX     Int     @id @unique(map: "F_IDX") @default(autoincrement()) @db.UnsignedInt
+  F_DIV     String? @db.VarChar(20)
+  F_DATE    String? @db.VarChar(10)
+  F_CUST    String? @db.VarChar(40)
+  F_STATE   String? @db.VarChar(20)
+  F_DAMDANG String? @db.VarChar(20)
+  F_MEMO    String? @db.Text
+  F_IMG     Bytes?
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_il_car {
+  IC_IDX   Int     @id @unique(map: "IC_IDX") @default(autoincrement()) @db.UnsignedInt
+  IC_DATE  String? @db.VarChar(10)
+  IC_NAME  String? @db.VarChar(30)
+  IC_SO    String? @db.VarChar(40)
+  IC_NAP   String? @db.VarChar(100)
+  IC_TON   String? @db.VarChar(20)
+  IC_KUM   Int     @default(0)
+  IC_YO    String? @db.VarChar(40)
+  IC_CHUNG String? @db.VarChar(40)
+  IC_UN    Int     @default(0)
+  IC_MEMO  String? @db.VarChar(200)
+  E_NAME   String? @db.VarChar(40)
+  IC_DONE  String  @default("N") @db.Char(1)
+  IC_MAGAM String  @default("N") @db.Char(1)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_il_code {
+  C_IDX  Int     @id @unique(map: "C_IDX") @default(autoincrement()) @db.UnsignedInt
+  C_DIV1 String  @default("Â÷·®±â»ç") @db.VarChar(20)
+  C_DIV2 String? @db.VarChar(40)
+  C_NAME String? @db.VarChar(40)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_il_kun {
+  IK_IDX   Int     @id @unique(map: "IK_IDX") @default(autoincrement()) @db.UnsignedInt
+  IK_DATE  String? @db.VarChar(10)
+  IK_DIV   String? @db.VarChar(10)
+  IK_NAME  String? @db.VarChar(40)
+  IK_GUBUN String? @db.VarChar(20)
+  IK_UN    String  @default("N") @db.Char(1)
+  IK_TWO   String  @default("N") @db.Char(1)
+  IK_PICK  String  @default("N") @db.Char(1)
+  IK_CHA   String  @default("N") @db.Char(1)
+  IK_KUM   Int     @default(0)
+  IK_MEMO  String? @db.VarChar(200)
+  E_NAME   String? @db.VarChar(40)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_in {
+  I_IDX       Int     @id @unique(map: "I_IDX") @default(autoincrement()) @db.UnsignedInt
+  I_DATE      String? @db.VarChar(10)
+  I_CUST_CODE String? @db.VarChar(40)
+  I_CUST_NAME String? @db.VarChar(80)
+  P_CODE      String? @db.VarChar(20)
+  P_NAME      String? @db.VarChar(80)
+  I_QTY       Int     @default(0)
+  P_GROUP     String? @db.VarChar(20)
+  I_MEMO      String? @db.VarChar(100)
+  I_EX_SEQ    String  @default("'") @db.VarChar(20)
+  B_QTY       Int     @default(0)
+
+  @@index([P_CODE, P_GROUP], map: "P_CODE")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_in_plan {
+  IP_IDX     Int     @id @unique(map: "IP_IDX") @default(autoincrement()) @db.UnsignedInt
+  C_NAME     String? @db.VarChar(40)
+  IP_DATE    String? @db.VarChar(10)
+  P_CODE     String? @db.VarChar(30)
+  IP_BARCODE String? @db.VarChar(30)
+  IP_QTY     Int     @default(0)
+  IP_KG      Decimal @default(0.00) @db.Decimal(11, 2)
+  P_IPSU     Int     @default(0)
+  CB_DRIVER  String? @db.VarChar(40)
+  B_IDX      Int     @default(0)
+  IP_MEMO    String? @db.VarChar(50)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_in_plan_imsi {
+  IP_IDX     Int     @id @unique(map: "IP_IDX") @default(autoincrement()) @db.UnsignedInt
+  C_NAME     String? @db.VarChar(40)
+  IP_DATE    String? @db.VarChar(10)
+  P_CODE     String? @db.VarChar(30)
+  IP_BARCODE String? @db.VarChar(30)
+  IP_QTY     Int     @default(0)
+  IP_KG      Decimal @default(0.00) @db.Decimal(11, 2)
+  P_IPSU     Int     @default(0)
+  CB_DRIVER  String? @db.VarChar(40)
+  B_IDX      Int     @default(0)
+  IP_MEMO    String? @db.VarChar(50)
+  E_NAME     String? @db.VarChar(20)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_ip_excel {
+  EX_IDX    Int     @id @unique(map: "EX_IDX") @default(autoincrement()) @db.UnsignedInt
+  EX_MAC    String? @db.VarChar(40)
+  EX_DATE   String? @db.VarChar(10)
+  EX_C_NAME String? @db.VarChar(40)
+  EX_P_NO   String? @db.VarChar(40)
+  EX_QTY    Int?
+  EX_MEMO   String? @db.VarChar(50)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_j_car {
+  CA_IDX        Int     @id @unique(map: "CA_IDX") @default(autoincrement()) @db.UnsignedInt
+  C_IDX         Int?
+  CA_NAME_OWNER String? @db.VarChar(100)
+  CA_NAME       String? @db.VarChar(40)
+  CA_HP         String? @db.VarChar(100)
+  CA_NO         String? @db.VarChar(100)
+  CA_KG         String? @db.VarChar(20)
+  CA_MEMO       String? @db.Text
+  CA_DATE_S     String? @db.VarChar(10)
+  CA_DATE_E     String? @db.VarChar(10)
+  CA_ADDRESS    String? @db.VarChar(200)
+  CA_JUMIN      String? @db.VarChar(40)
+  CA_DEL        String  @default("N") @db.Char(1)
+  CA_IS_CLOSE   String  @default("N") @db.Char(1)
+  CA_KM         Int     @default(0)
+  CA_COURSE     String? @db.VarChar(100)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_j_code_basic {
+  C_IDX    Int     @id @default(autoincrement()) @db.UnsignedInt
+  C_DIV    String? @db.VarChar(20)
+  C_NAME   String? @db.VarChar(50)
+  C_PYO    String? @db.VarChar(20)
+  C_IS_DAS String  @default("Y") @db.Char(1)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_j_code_gae {
+  G_IDX  Int     @id @unique(map: "G_IDX") @default(autoincrement()) @db.UnsignedInt
+  G_NAME String? @db.VarChar(100)
+  G_KUM  Int     @default(0)
+  G_DIV1 String? @db.VarChar(20)
+  G_DIV2 String? @db.VarChar(20)
+  G_FIX  String  @default("N") @db.Char(1)
+  G_MEMO String? @db.Text
+  G_DEL  String  @default("N") @db.Char(1)
+  J_SEQ  Int     @default(0)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_j_code_ji {
+  J_IDX  Int     @id @unique(map: "J_IDX") @default(autoincrement()) @db.UnsignedInt
+  J_DIV  String? @db.VarChar(20)
+  J_NAME String? @db.VarChar(20)
+  J_SEQ  Int     @default(0)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_j_cust {
+  C_IDX       Int     @id @default(autoincrement()) @db.UnsignedInt
+  C_NAME      String? @db.VarChar(50)
+  C_SANO      String? @db.VarChar(20)
+  C_ADDRESS   String? @db.VarChar(100)
+  C_CEO       String? @db.VarChar(40)
+  C_TEL       String? @db.VarChar(100)
+  C_OPEN_DATE String? @db.VarChar(10)
+  C_TAE       String? @db.VarChar(100)
+  C_JONG      String? @db.VarChar(100)
+  C_MEMO      String? @db.VarChar(200)
+  C_BANK      String? @db.VarChar(100)
+  C_BANK_NO   String? @db.VarChar(60)
+  C_BANK_NAME String? @db.VarChar(80)
+  C_SOSOK     String? @db.VarChar(40)
+  C_BANK_OUT  String? @db.VarChar(100)
+  C_TAX_PRINT String  @default("Á¾ÀÌ") @db.VarChar(10)
+  C_TAX_FREE  String  @default("°ú¼¼") @db.VarChar(10)
+  C_SORT_SEQ  Int     @default(0)
+  C_DEL       String  @default("N") @db.Char(1)
+  C_IS_CLOSE  String  @default("N") @db.Char(1)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_j_drvhist {
+  DH_IDX        Int      @id @unique(map: "DH_IDX") @default(autoincrement()) @db.UnsignedInt
+  CA_IDX        Int?
+  DH_DATE       String?  @db.VarChar(10)
+  DH_GOKM       Int?
+  DH_JOO        Int?
+  DH_DORO1      Int?
+  DH_JUYOU1     Decimal? @db.Decimal(10, 3)
+  DH_DAN1       Int?
+  DH_KUM1       Int?
+  DH_JUYOU_DATE String?  @db.VarChar(10)
+  DH_MEMO1      String?  @db.VarChar(100)
+  DH_DORO2      Int?
+  DH_JUYOU2     Decimal? @db.Decimal(10, 3)
+  DH_DAN2       Int?
+  DH_KUM2       Int?
+  DH_MEMO2      String?  @db.VarChar(100)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_j_employ {
+  E_IDX   Int     @id @default(autoincrement()) @db.UnsignedInt
+  E_SABUN String? @db.VarChar(20)
+  E_PASS  String? @db.VarChar(20)
+  E_NAME  String? @db.VarChar(20)
+  E_PO    Int     @default(0) @db.UnsignedInt
+  E_DEL   String  @default("N") @db.Char(1)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_j_employ_menu {
+  EM_IDX         Int     @id @unique(map: "EM_IDX") @default(autoincrement()) @db.UnsignedInt
+  E_IDX          Int?
+  MC_WINDOW_NAME String? @db.VarChar(40)
+  EM_POWER       Int     @default(1)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_j_in {
+  I_IDX       Int     @id @unique(map: "I_IDX") @default(autoincrement()) @db.UnsignedInt
+  I_DIV       String  @default("ÀÏ¹Ý") @db.VarChar(10)
+  I_DEL       String  @default("N") @db.Char(1)
+  I_DATE_JAK  String? @db.VarChar(10)
+  I_DATE_IN   String? @db.VarChar(10)
+  CA_IDX      Int?
+  G_IDX       Int?
+  I_KUM       Int     @default(0)
+  I_MEMO      String? @db.Text
+  J_SEQ       Int     @default(0)
+  I_IDX_YOUNG Int?
+  I_NAP_NAME  String? @db.VarChar(40)
+  I_MUL       String? @db.VarChar(40)
+  I_YO_NAME   String? @db.VarChar(40)
+  I_CHUNG_JI  String? @db.VarChar(40)
+  I_CHUNG_YO  Int?
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_j_menu_code {
+  MC_IDX         Int     @id @unique(map: "MC_IDX") @default(autoincrement()) @db.UnsignedInt
+  MC_WINDOW_NAME String? @db.VarChar(40)
+  MC_WINDOW_CODE String? @db.VarChar(40)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_j_tong_code {
+  J_IDX       Int     @id @unique(map: "J_IDX") @default(autoincrement()) @db.UnsignedInt
+  J_BANK      String? @db.VarChar(40)
+  J_BANK_NAME String? @db.VarChar(40)
+  J_BANK_NO   String? @db.VarChar(40)
+  J_MEMO      String? @db.Text
+  J_DEL       String  @default("N") @db.Char(1)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_j_tong_hist {
+  JH_IDX     Int     @id @unique(map: "JH_IDX") @default(autoincrement()) @db.UnsignedInt
+  J_IDX      Int?
+  JH_DATE    String? @db.VarChar(10)
+  JH_KUM_IN  BigInt
+  JH_KUM_OUT BigInt  @default(0)
+  JH_MEMO    String? @db.Text
+  JH_DEL     String  @default("N") @db.Char(1)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_job_board {
+  J_IDX        Int     @id @unique(map: "J_IDX") @default(autoincrement()) @db.UnsignedInt
+  J_DATE       String? @db.VarChar(10)
+  C_NAME       String? @db.VarChar(20)
+  B_C_CODE     String? @db.VarChar(20)
+  B_C_NAME_ORI String? @db.VarChar(80)
+  B_C_NAME     String? @db.VarChar(80)
+  TMP_TIME     String? @db.VarChar(10)
+  ORDER_NO     String? @db.VarChar(20)
+  B_P_NO       String? @db.VarChar(20)
+  B_P_NAME     String? @db.VarChar(100)
+  B_QTY        String? @db.VarChar(20)
+  TMP_MEMO     String? @db.VarChar(200)
+  E_NAME       String? @db.VarChar(20)
+  J_COLOR      Int?
+  J_YOCHUNG    String? @db.VarChar(40)
+  J_DONE       String  @default("N") @db.Char(1)
+
+  @@index([J_DATE], map: "J_DATE")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_job_board_night {
+  J_IDX    Int     @id @unique(map: "J_IDX") @default(autoincrement()) @db.UnsignedInt
+  J_DATE   String? @db.VarChar(10)
+  E_NAME   String? @db.VarChar(20)
+  TMP_MEMO String? @db.VarChar(200)
+  J_COLOR  Int?
+  J_DONE   String  @default("N") @db.Char(1)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_magam {
+  M_IDX  Int     @id @unique(map: "M_IDX") @default(autoincrement()) @db.UnsignedInt
+  M_DATE String? @db.VarChar(10)
+  C_NAME String? @db.VarChar(20)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_manage_stock {
+  MS_IDX   Int     @id @unique(map: "MS_IDX") @default(autoincrement()) @db.UnsignedInt
+  E_NAME   String? @db.VarChar(20)
+  P_CODE   String? @db.VarChar(20)
+  P_GROUP  String? @db.VarChar(20)
+  MS_QTY   Int     @default(0)
+  MS_MEMO1 String? @db.Text
+  MS_MEMO2 String? @db.Text
+  MS_COLOR Int?
+  MS_DATE  String? @db.VarChar(10)
+  MS_DIV   String? @db.VarChar(10)
+
+  @@index([MS_DATE, P_CODE], map: "MS_DATE")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_memo {
+  M_IDX  Int     @id @unique(map: "M_IDX") @default(autoincrement()) @db.UnsignedInt
+  M_DATE String? @db.VarChar(10)
+  C_NAME String? @db.VarChar(60)
+  M_DIV  String? @db.VarChar(20)
+  M_MEMO String? @db.VarChar(200)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_memo_board {
+  MB_IDX  Int     @id @unique(map: "MB_IDX") @default(autoincrement()) @db.UnsignedInt
+  E_NAME1 String? @db.VarChar(20)
+  E_NAME2 String? @db.VarChar(20)
+  MB_DATE String? @db.VarChar(10)
+  MB_MEMO String? @db.Text
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_memo_patch {
+  MP_IDX     Int       @id @unique(map: "MP_IDX") @default(autoincrement()) @db.UnsignedInt
+  MP_SYSDATE DateTime? @db.DateTime(0)
+  MP_MEMO    String?   @db.Text
+  MP_DATE    String?   @db.VarChar(10)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_menu_code {
+  MC_IDX         Int     @id @unique(map: "MC_IDX") @default(autoincrement()) @db.UnsignedInt
+  MC_WINDOW_NAME String? @db.VarChar(40)
+  MC_WINDOW_CODE String? @db.VarChar(40)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_missout {
+  MO_IDX    Int     @id @unique(map: "MO_IDX") @default(autoincrement()) @db.UnsignedInt
+  B_IDX     Int?
+  B_DATE    String? @db.VarChar(10)
+  CB_IDX    Int?
+  CB_DRIVER String? @db.VarChar(40)
+  B_C_NAME  String? @db.VarChar(80)
+  B_C_CODE  String? @db.VarChar(40)
+  B_P_NAME  String? @db.VarChar(80)
+  B_P_NO    String? @db.VarChar(20)
+  B_QTY     Int     @default(0)
+  B_IN_QTY  Int     @default(0)
+  MO_MEMO1  String? @db.VarChar(100)
+  MO_MEMO2  String? @db.VarChar(100)
+  E_NAME    String? @db.VarChar(20)
+  C_NAME    String? @db.VarChar(40)
+  B_QTY_ORI Int     @default(0)
+
+  @@index([B_IDX], map: "B_IDX")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_missout_memo {
+  MM_IDX  Int     @id @unique(map: "MM_IDX") @default(autoincrement()) @db.UnsignedInt
+  MM_DATE String? @db.VarChar(10)
+  MM_MEMO String? @db.Text
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_out {
+  O_IDX       Int     @id @unique(map: "O_IDX") @default(autoincrement()) @db.UnsignedInt
+  O_DATE      String? @db.VarChar(10)
+  O_CUST_CODE String? @db.VarChar(40)
+  O_CUST_NAME String? @db.VarChar(80)
+  O_NAP_DIV   String? @db.VarChar(5)
+  P_CODE      String? @db.VarChar(20)
+  P_NAME      String? @db.VarChar(80)
+  O_QTY       Int     @default(0)
+  O_DAN       Int     @default(0)
+  O_VAT_DIV   String  @default("1") @db.Char(1)
+  O_MEMO      String? @db.VarChar(100)
+  C_NAME      String? @db.VarChar(50)
+  O_EX_SEQ    String  @default("'") @db.VarChar(20)
+  O_JUNG_DIV  String? @db.VarChar(20)
+  O_MEMO2     String? @db.VarChar(100)
+  CB_DRIVER   String  @db.VarChar(20)
+  B_IDX       Int?
+  O_PAE       String  @default("N") @db.Char(1)
+
+  @@index([B_IDX], map: "B_IDX")
+  @@index([O_CUST_CODE, C_NAME], map: "O_CUST_CODE")
+  @@index([P_CODE, C_NAME], map: "P_CODE")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_out_box {
+  O_IDX       Int     @id @unique(map: "O_IDX") @default(autoincrement()) @db.UnsignedInt
+  O_DATE      String? @db.VarChar(10)
+  O_CUST_CODE String? @db.VarChar(40)
+  O_CUST_NAME String? @db.VarChar(80)
+  P_NAME      String? @db.VarChar(80)
+  O_QTY       Int     @default(0)
+  O_MEMO      String? @db.VarChar(100)
+  C_NAME      String? @db.VarChar(50)
+  CB_DRIVER   String  @db.VarChar(20)
+  O_SEQ       String? @db.VarChar(20)
+  E_NAME      String? @db.VarChar(20)
+
+  @@index([O_CUST_CODE, C_NAME], map: "O_CUST_CODE")
+  @@index([C_NAME], map: "P_CODE")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_pibox_io {
+  PB_IDX    Int     @id @unique(map: "PB_IDX") @default(autoincrement()) @db.UnsignedInt
+  CB_DRIVER String? @db.VarChar(40)
+  PB_DATE   String? @db.VarChar(10)
+  CB_BIND   String? @db.VarChar(80)
+  K0_I      Int     @default(0)
+  K1_I      Int     @default(0)
+  K2_I      Int     @default(0)
+  K3_I      Int     @default(0)
+  D0_I      Int     @default(0)
+  D1_I      Int     @default(0)
+  D2_I      Int     @default(0)
+  D3_I      Int     @default(0)
+  N0_I      Int     @default(0)
+  N1_I      Int     @default(0)
+  N2_I      Int     @default(0)
+  N3_I      Int     @default(0)
+  P_KPP_I   Int     @default(0)
+  P_AJU_I   Int     @default(0)
+  P_ECT_I   Int     @default(0)
+  K0_O      Int     @default(0)
+  K1_O      Int     @default(0)
+  K2_O      Int     @default(0)
+  K3_O      Int     @default(0)
+  D0_O      Int     @default(0)
+  D1_O      Int     @default(0)
+  D2_O      Int     @default(0)
+  D3_O      Int     @default(0)
+  N0_O      Int     @default(0)
+  N1_O      Int     @default(0)
+  N2_O      Int     @default(0)
+  N3_O      Int     @default(0)
+  P_KPP_O   Int     @default(0)
+  P_AJU_O   Int     @default(0)
+  P_ECT_O   Int     @default(0)
+  CB_CODE   String? @db.VarChar(40)
+  C_NAME    String? @db.VarChar(20)
+  PB_MEMO   String? @db.VarChar(200)
+  PB_DIV    String  @default("FNF") @db.VarChar(10)
+
+  @@index([CB_DRIVER, PB_DATE, CB_BIND], map: "CB_DRIVER")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_pibox_io_20250225 {
+  PB_IDX    Int     @id @unique(map: "PB_IDX_20250225") @default(autoincrement()) @db.UnsignedInt
+  CB_DRIVER String? @db.VarChar(40)
+  PB_DATE   String? @db.VarChar(10)
+  CB_BIND   String? @db.VarChar(80)
+  K0_I      Int     @default(0)
+  K1_I      Int     @default(0)
+  K2_I      Int     @default(0)
+  K3_I      Int     @default(0)
+  D0_I      Int     @default(0)
+  D1_I      Int     @default(0)
+  D2_I      Int     @default(0)
+  D3_I      Int     @default(0)
+  N0_I      Int     @default(0)
+  N1_I      Int     @default(0)
+  N2_I      Int     @default(0)
+  N3_I      Int     @default(0)
+  P_KPP_I   Int     @default(0)
+  P_AJU_I   Int     @default(0)
+  P_ECT_I   Int     @default(0)
+  K0_O      Int     @default(0)
+  K1_O      Int     @default(0)
+  K2_O      Int     @default(0)
+  K3_O      Int     @default(0)
+  D0_O      Int     @default(0)
+  D1_O      Int     @default(0)
+  D2_O      Int     @default(0)
+  D3_O      Int     @default(0)
+  N0_O      Int     @default(0)
+  N1_O      Int     @default(0)
+  N2_O      Int     @default(0)
+  N3_O      Int     @default(0)
+  P_KPP_O   Int     @default(0)
+  P_AJU_O   Int     @default(0)
+  P_ECT_O   Int     @default(0)
+  CB_CODE   String? @db.VarChar(40)
+  C_NAME    String? @db.VarChar(20)
+  PB_MEMO   String? @db.VarChar(200)
+  PB_DIV    String  @default("FNF") @db.VarChar(10)
+
+  @@index([CB_DRIVER, PB_DATE, CB_BIND], map: "CB_DRIVER_20250225")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_pibox_move {
+  PM_IDX    Int     @id @unique(map: "PM_IDX") @default(autoincrement()) @db.UnsignedInt
+  CB_DRIVER String? @db.VarChar(40)
+  CB_BIND   String? @db.VarChar(80)
+  PM_DATE   String? @db.VarChar(10)
+  CB_CODE   String? @db.VarChar(40)
+  C_NAME    String? @db.VarChar(20)
+  PM_MEMO   String? @db.VarChar(200)
+  PM_NAME   String? @db.VarChar(40)
+  PM_QTY    Int     @default(0)
+  PM_IO     String  @default("ÀÔ°í") @db.Char(4)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_pick_memo {
+  PM_IDX     Int     @id @unique(map: "PM_IDX") @default(autoincrement()) @db.UnsignedInt
+  P_DIV_PICK String? @db.VarChar(40)
+  B_DATE     String? @db.VarChar(10)
+  PM_MEMO    String? @db.Text
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_product {
+  P_IDX           Int     @id @unique(map: "P_IDX") @default(autoincrement()) @db.UnsignedInt
+  P_CODE          String? @db.VarChar(20)
+  P_NAME          String? @db.VarChar(80)
+  P_DIV_BAS       String? @db.VarChar(20)
+  P_DIV_PICK      String? @db.VarChar(20)
+  P_GROUP         String? @db.VarChar(20)
+  P_PIBOX         String? @db.VarChar(20)
+  P_PIBOX_QTY     Int     @default(0)
+  P_KG            Decimal @default(0.000) @db.Decimal(11, 3)
+  P_DAN           Int     @default(0)
+  P_BARCODE       String? @db.VarChar(20)
+  P_BARCODE2      String? @db.VarChar(20)
+  P_MEMO          String? @db.VarChar(255)
+  P_KIHAN         String? @db.VarChar(10)
+  P_IPSU          Int     @default(1)
+  P_STOCK_QTY     Int     @default(0)
+  P_IMG           Bytes?
+  P_DIV_STOCK     String? @db.VarChar(20)
+  P_IS_FREZ       String  @default("N") @db.Char(1)
+  F_DAMDANG       String? @db.VarChar(40)
+  F_INS_DATE      String? @db.VarChar(10)
+  F_QTY           Int     @default(0)
+  P_IS_VAT        String  @default("1") @db.Char(1)
+  P_MAKER         String? @db.VarChar(20)
+  SI_QTY          Int     @default(0)
+  P_IS_NO_BARCODE String  @default("N") @db.Char(1)
+
+  @@unique([P_CODE, P_GROUP], map: "p_code_inx")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_product_back {
+  P_IDX           Int     @id @unique(map: "P_IDX_BACK") @default(autoincrement()) @db.UnsignedInt
+  P_CODE          String? @db.VarChar(20)
+  P_NAME          String? @db.VarChar(80)
+  P_DIV_BAS       String? @db.VarChar(20)
+  P_DIV_PICK      String? @db.VarChar(20)
+  P_GROUP         String? @db.VarChar(20)
+  P_PIBOX         String? @db.VarChar(20)
+  P_PIBOX_QTY     Int     @default(0)
+  P_KG            Decimal @default(0.000) @db.Decimal(11, 3)
+  P_DAN           Int     @default(0)
+  P_BARCODE       String? @db.VarChar(20)
+  P_BARCODE2      String? @db.VarChar(20)
+  P_MEMO          String? @db.VarChar(255)
+  P_KIHAN         String? @db.VarChar(10)
+  P_IPSU          Int     @default(1)
+  P_STOCK_QTY     Int     @default(0)
+  P_IMG           Bytes?
+  P_DIV_STOCK     String? @db.VarChar(20)
+  P_IS_FREZ       String  @default("N") @db.Char(1)
+  F_DAMDANG       String? @db.VarChar(40)
+  F_INS_DATE      String? @db.VarChar(10)
+  F_QTY           Int     @default(0)
+  P_IS_VAT        String  @default("1") @db.Char(1)
+  P_MAKER         String? @db.VarChar(20)
+  SI_QTY          Int     @default(0)
+  P_IS_NO_BARCODE String  @default("N") @db.Char(1)
+
+  @@unique([P_CODE, P_GROUP], map: "p_code_inx_BACK")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_product_excel {
+  EX_P_IDX        Int     @id @unique(map: "EX_P_IDX") @default(autoincrement()) @db.UnsignedInt
+  EX_MAC          String? @db.VarChar(40)
+  EX_P_CODE       String? @db.VarChar(20)
+  EX_P_NAME       String? @db.VarChar(80)
+  EX_P_DIV_BAS    String? @db.VarChar(20)
+  EX_P_DIV_PICK   String? @db.VarChar(20)
+  EX_P_GROUP      String? @db.VarChar(20)
+  EX_P_PIBOX      String? @db.VarChar(20)
+  EX_P_PIBOX_QTY  Int     @default(0)
+  EX_P_KG         Decimal @default(0.000) @db.Decimal(11, 3)
+  EX_P_BARCODE    String? @db.VarChar(20)
+  EX_P_BARCODE2   String? @db.VarChar(20)
+  EX_P_MEMO       String? @db.VarChar(255)
+  EX_P_KIHAN      String? @db.VarChar(10)
+  EX_P_IPSU       Int     @default(1)
+  EX_P_DIV_STOCK  String? @db.VarChar(20)
+  EX_P_MAKER      String? @db.VarChar(20)
+  EX_P_IS_VAT     String? @db.Char(1)
+  P_IS_NO_BARCODE String? @db.Char(10)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_sang_memo {
+  SM_IDX  Int     @id @unique(map: "SM_IDX") @default(autoincrement()) @db.UnsignedInt
+  CA_IDX  Int?
+  B_DATE  String? @db.VarChar(10)
+  SM_MEMO String? @db.Text
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_sms_temp {
+  SMS_STR      String?   @db.VarChar(2000)
+  SMS_TEL      String?   @db.VarChar(20)
+  SMS_DATETIME DateTime? @db.DateTime(0)
+  SMS_IDX      Int       @id @unique(map: "SMS_IDX") @default(autoincrement()) @db.UnsignedInt
+  E_IDX        Int?
+  SMS_DIV      String    @default("SMS") @db.Char(3)
+
+  @@index([SMS_TEL], map: "SMS_TEL")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_stock_das {
+  SD_IDX  Int     @id @unique(map: "SD_IDX") @default(autoincrement()) @db.UnsignedInt
+  E_NAME  String? @db.VarChar(20)
+  SD_DATE String? @db.VarChar(10)
+  P_CODE  String? @db.VarChar(20)
+  P_GROUP String? @db.VarChar(20)
+  SD_QTY  Int     @default(0)
+  SD_QTY2 Int     @default(0)
+  SD_MEMO String? @db.Text
+
+  @@index([SD_DATE, P_CODE], map: "MS_DATE")
+  @@index([P_CODE, P_GROUP], map: "t_stock_das_idx1")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_stock_inspect {
+  SI_IDX     Int       @id @unique(map: "SI_IDX") @default(autoincrement()) @db.UnsignedInt
+  SI_SYSDATE DateTime? @db.DateTime(0)
+  P_BARCODE  String?   @db.VarChar(20)
+  P_GROUP    String?   @db.VarChar(20)
+  E_NAME     String?   @db.VarChar(20)
+  SI_QTY     Int       @default(0)
+  STOCK_QTY  Int       @default(0)
+  SI_MEMO    String?   @db.VarChar(100)
+  SI_DATE_UT String?   @db.VarChar(10)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model t_tel {
+  N_IDX   Int     @id @unique(map: "N_IDX") @default(autoincrement()) @db.UnsignedInt
+  N_GROUP String? @db.VarChar(40)
+  N_NAME  String? @db.VarChar(40)
+  N_TEL   String? @db.VarChar(40)
+  N_MEMO  String? @db.VarChar(200)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model t_tmp {
+  p_code    String? @db.VarChar(20)
+  p_group   String? @db.VarChar(20)
+  p_barcode String? @db.VarChar(20)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model t_tmp2 {
+  P_IDX Int?
+
+  @@index([P_IDX], map: "P_IDX")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model t_tmp3 {
+  CB_DRIVER     String? @db.VarChar(40)
+  CA_DAS_NUM_1  String? @db.VarChar(10)
+  CA_DAS_NUM_2  String? @db.VarChar(10)
+  CA_DAS_NUM_3  String? @db.VarChar(10)
+  CA_DAS_NUM_C1 String? @db.VarChar(20)
+  CA_DAS_NUM_C2 String? @db.VarChar(20)
+  CA_DAS_NUM_C3 String? @db.VarChar(20)
+
+  @@ignore
+}

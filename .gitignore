@@ -1,0 +1,13 @@
+node_modules
+.env
+*.xlsx
+*.log
+*.txt
+*.md
+!README.md
+!task.md
+!implementation_plan.md
+!walkthrough.md
+prisma/migrations
+.antigravityrules
+C:\Users\user\.gemini\antigravity\brain\
