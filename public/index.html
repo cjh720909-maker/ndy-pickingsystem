@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배차 관리 시스템</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .sidebar-item {
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .sidebar-item:hover,
+        .sidebar-item.active {
+            background-color: #4338ca;
+            color: white;
+        }
+
+        .view-content:not(.active) {
+            display: none !important;
+        }
+
+        /* 2단 요약 정보를 가로로 강제 배치 */
+        .summary-row.active {
+            display: flex !important;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        /* Sticky Table Header Fix */
+        thead.sticky th {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background-color: #f1f5f9;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-100 text-slate-800 h-screen flex overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-indigo-900 text-indigo-100 flex-shrink-0 hidden md:flex flex-col shadow-2xl relative z-20">
+        <div class="h-16 flex items-center px-6 font-bold text-xl tracking-wider text-white bg-indigo-950">
+            🚚 Antigravity
+        </div>
+        <div class="p-4 space-y-2 flex-grow">
+            <div onclick="switchView('dispatch')" id="menu-dispatch"
+                class="sidebar-item w-full flex items-center px-4 py-3 rounded-xl font-medium text-left">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2-2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                    </path>
+                </svg>
+                배차 요약 리포트
+            </div>
+            <div onclick="switchView('picking')" id="menu-picking"
+                class="sidebar-item w-full flex items-center px-4 py-3 rounded-xl font-medium text-left">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                    </path>
+                </svg>
+                피킹 요약 리포트
+            </div>
+            <div onclick="switchView('analysis')" id="menu-analysis"
+                class="sidebar-item w-full flex items-center px-4 py-3 rounded-xl font-medium text-left">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                </svg>
+                피킹 분석 리포트
+            </div>
+        </div>
+        <div class="p-4 text-xs text-indigo-400 text-center">
+            © 2026 Antigravity System
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col h-screen overflow-hidden relative">
+
+        <!-- Header -->
+        <header class="h-16 bg-white shadow-sm flex items-center px-6 z-10 justify-between flex-shrink-0">
+            <div class="font-bold text-lg text-slate-700" id="page-title">리포트 조회</div>
+            <div class="text-xs text-slate-400" id="currentDate"></div>
+        </header>
+
+        <!-- Common Master Header (Level 1 + 2 + 3 Integrated) -->
+        <div class="sticky top-0 z-30 bg-white border-b border-slate-200 shadow-sm flex-shrink-0">
+            <div class="max-w-7xl mx-auto divide-y divide-slate-100">
+                <!-- Level 1: Filter Area (Ultra Compact) -->
+                <div class="px-6 py-2 bg-slate-50 flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-4 flex-grow overflow-x-auto no-scrollbar">
+                        <div class="flex items-center gap-1.5 flex-shrink-0">
+                            <span class="text-[10px] font-bold text-slate-400">기간</span>
+                            <input type="date" id="startDate" class="px-2 py-1 border rounded text-xs bg-white">
+                            <span class="text-slate-300">-</span>
+                            <input type="date" id="endDate" class="px-2 py-1 border rounded text-xs bg-white">
+                        </div>
+                        <div id="driver-filter-group" class="flex items-center gap-2 flex-shrink-0">
+                            <span class="text-[10px] font-bold text-slate-400 whitespace-nowrap">기사</span>
+                            <input type="text" id="driverInput" placeholder="기사명"
+                                class="w-32 px-2 py-1 border rounded text-xs bg-white outline-none focus:ring-1 focus:ring-indigo-500">
+                        </div>
+                        <div id="analysis-filter-group" class="hidden items-center gap-2 flex-shrink-0">
+                            <span class="text-[10px] font-bold text-slate-400 whitespace-nowrap">그룹</span>
+                            <select id="analysisSelect"
+                                class="w-24 px-2 py-1 border rounded text-xs bg-white outline-none">
+                                <option value="">전체 분류</option>
+                                <option value="두부">두부</option>
+                                <option value="피박스">피박스</option>
+                                <option value="콩나물">콩나물</option>
+                                <option value="냉동">냉동</option>
+                            </select>
+                        </div>
+                        <div id="customer-filter-group" class="flex items-center gap-1.5 flex-shrink-0">
+                            <span class="text-[10px] font-bold text-slate-400">고객사</span>
+                            <select id="custSelect" class="px-2 py-1 border rounded text-xs bg-white">
+                                <option value="">전체</option>
+                                <option value="대상">대상</option>
+                                <option value="하회마을">하회마을</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="fetchData()"
+                        class="px-4 py-1.5 bg-indigo-600 text-white rounded font-bold text-xs hover:bg-indigo-700 whitespace-nowrap">조회</button>
+                </div>
+
+                <!-- Level 2: Summary Chips Area (Horizontal Flex Only) -->
+                <div class="px-6 py-2 bg-white">
+                    <div id="dispatch-summaryCards" class="view-content active summary-row active"></div>
+                    <div id="picking-summaryCards" class="view-content summary-row"></div>
+                    <div id="analysis-summaryCards" class="view-content summary-row"></div>
+                </div>
+
+                <!-- Level 3: Consolidated Table Headers -->
+                <div class="bg-slate-100 text-slate-500 font-bold text-[11px] uppercase tracking-wider border-t">
+                    <!-- Dispatch Header -->
+                    <div id="dispatch-header" class="view-content active flex px-6 py-2">
+                        <div class="w-[50px] flex-shrink-0">No.</div>
+                        <div class="w-[100px] flex-shrink-0">기사명</div>
+                        <div class="w-[150px] flex-shrink-0">배차명</div>
+                        <div class="w-[100px] flex-shrink-0 text-right">납품처</div>
+                        <div class="w-[100px] flex-shrink-0 text-right">피킹</div>
+                        <div class="w-[110px] flex-shrink-0 text-right">배차중량</div>
+                        <div class="w-[110px] shrink-0 text-right">적재중량</div>
+                        <div class="w-[90px] flex-shrink-0 text-right">적재율</div>
+                        <div class="flex-grow text-center">점유율</div>
+                    </div>
+                    <div id="picking-header" class="view-content flex px-6 py-2">
+                        <div class="w-[50px] flex-shrink-0 text-center">No.</div>
+                        <div class="w-[200px] flex-shrink-0">피킹 분류명</div>
+                        <div class="w-[80px] flex-shrink-0 text-center">DAS</div>
+                        <div class="w-[130px] flex-shrink-0 text-right">피킹 건수</div>
+                        <div class="w-[140px] flex-shrink-0 text-right">총 수량</div>
+                        <div class="w-[140px] flex-shrink-0 text-right">총 중량</div>
+                        <div class="flex-grow text-center">비중</div>
+                    </div>
+                    <!-- Analysis Header -->
+                    <div id="analysis-header" class="view-content flex px-6 py-2">
+                        <div class="w-[50px] flex-shrink-0 text-center">No.</div>
+                        <div class="w-[130px] flex-shrink-0">피킹그룹</div>
+                        <div class="w-[150px] flex-shrink-0">배차명</div>
+                        <div class="w-[80px] flex-shrink-0 text-center">도크</div>
+                        <div class="w-[100px] flex-shrink-0 text-right">박스</div>
+                        <div class="w-[100px] flex-shrink-0 text-right">낱개</div>
+                        <div class="w-[100px] flex-shrink-0 text-right">피킹</div>
+                        <div class="w-[110px] flex-shrink-0 text-right">총수량</div>
+                        <div class="w-[110px] flex-shrink-0 text-right">총중량</div>
+                        <div class="flex-grow text-center">비중</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scrollable Content Area -->
+        <main class="flex-1 overflow-y-auto p-6 bg-slate-100">
+            <div class="max-w-7xl mx-auto">
+
+                <!-- Dispatch View Container -->
+                <div id="view-dispatch" class="view-content active">
+                    <div class="bg-white border rounded shadow-sm overflow-hidden">
+                        <table class="w-full text-left text-sm table-fixed">
+                            <tbody id="dispatch-tableBody" class="divide-y text-slate-600">
+                                <tr>
+                                    <td colspan="9" class="p-8 text-center text-slate-400">데이터를 조회해주세요.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Picking View Container -->
+                <div id="view-picking" class="view-content">
+                    <div class="bg-white border rounded shadow-sm overflow-hidden">
+                        <table class="w-full text-left text-sm table-fixed">
+                            <tbody id="picking-tableBody" class="divide-y text-slate-600">
+                                <tr>
+                                    <td colspan="7" class="p-8 text-center text-slate-400">데이터를 조회해주세요.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Analysis View Container -->
+                <div id="view-analysis" class="view-content">
+                    <div class="bg-white border rounded shadow-sm overflow-hidden">
+                        <table class="w-full text-left text-sm table-fixed">
+                            <tbody id="analysis-tableBody" class="divide-y text-slate-600">
+                                <tr>
+                                    <td colspan="10" class="p-8 text-center text-slate-400">데이터를 조회해주세요.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/common.js"></script>
+    <script src="/dispatch.js"></script>
+    <script src="/picking.js"></script>
+    <script src="/analysis.js"></script>
+    <script>
+        let currentView = 'dispatch';
+
+        // View Switching Logic (Display Only - No State Reset)
+        function switchView(view) {
+            currentView = view;
+
+            // UI Update
+            document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
+            document.getElementById('menu-' + view).classList.add('active');
+
+            document.querySelectorAll('.view-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('view-' + view).classList.add('active');
+
+            const pageTitles = {
+                'dispatch': '배차 요약 리포트',
+                'picking': '피킹 요약 리포트',
+                'analysis': '피킹 분석 리포트'
+            };
+            document.getElementById('page-title').innerText = pageTitles[view];
+
+            // Filter Visibility Control
+            const driverFilter = document.getElementById('driver-filter-group');
+            const customerFilter = document.getElementById('customer-filter-group');
+            const analysisFilter = document.getElementById('analysis-filter-group');
+
+            if (view === 'dispatch') {
+                driverFilter.style.display = 'flex';
+                customerFilter.style.display = 'flex';
+                analysisFilter.style.display = 'none';
+
+                document.getElementById('dispatch-summaryCards').classList.add('active');
+                document.getElementById('picking-summaryCards').classList.remove('active');
+                document.getElementById('analysis-summaryCards').classList.remove('active');
+
+                document.getElementById('dispatch-header').classList.add('active');
+                document.getElementById('picking-header').classList.remove('active');
+                document.getElementById('analysis-header').classList.remove('active');
+            } else if (view === 'picking') {
+                driverFilter.style.display = 'none';
+                customerFilter.style.display = 'flex';
+                analysisFilter.style.display = 'none';
+
+                document.getElementById('dispatch-summaryCards').classList.remove('active');
+                document.getElementById('picking-summaryCards').classList.add('active');
+                document.getElementById('analysis-summaryCards').classList.remove('active');
+
+                document.getElementById('dispatch-header').classList.remove('active');
+                document.getElementById('picking-header').classList.add('active');
+                document.getElementById('analysis-header').classList.remove('active');
+            } else {
+                driverFilter.style.display = 'none';
+                customerFilter.style.display = 'none';
+                analysisFilter.style.display = 'flex';
+
+                document.getElementById('dispatch-summaryCards').classList.remove('active');
+                document.getElementById('picking-summaryCards').classList.remove('active');
+                document.getElementById('analysis-summaryCards').classList.add('active');
+
+                document.getElementById('dispatch-header').classList.remove('active');
+                document.getElementById('picking-header').classList.remove('active');
+                document.getElementById('analysis-header').classList.add('active');
+            }
+
+            // URL Update
+            window.history.pushState({}, '', '/' + view);
+        }
+
+        // Global fetchData proxy
+        function fetchData() {
+            if (currentView === 'dispatch') fetchDispatchData();
+            else if (currentView === 'picking') fetchPickingData();
+            else fetchAnalysisData();
+        }
+
+        // Auto-detect view from URL
+        window.onload = () => {
+            const path = window.location.pathname;
+            if (path.includes('analysis')) switchView('analysis');
+            else if (path.includes('picking')) switchView('picking');
+            else switchView('dispatch');
+        };
+
+        // Enter key listener
+        document.getElementById('driverInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') fetchData();
+        });
+    </script>
+</body>
+
+</html>
