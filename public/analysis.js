@@ -27,6 +27,10 @@ async function fetchAnalysisData() {
             return;
         }
 
+        // 정렬을 위해 데이터 저장
+        window.appState.analysisData = json.data;
+        window.appState.analysisSummary = json; // 전체 저장
+
         renderAnalysisData(json.data, tbody, cards);
     } catch (e) {
         console.error(e);

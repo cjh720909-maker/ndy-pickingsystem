@@ -20,11 +20,9 @@ async function fetchPickingData() {
         const res = await fetch(url);
         const json = await res.json();
 
-        if (json.error) {
-            alert('피킹 데이터 에러: ' + json.error);
-            tbody.innerHTML = '<tr><td colspan="10" class="p-8 text-center text-red-500">조회 실패</td></tr>';
-            return;
-        }
+        // 정렬을 위해 데이터 저장
+        window.appState.pickingData = json.data;
+        window.appState.pickingSummary = json; // summary 객체가 따로 없으므로 전체 저장
 
         renderPickingData(json, tbody, cards);
     } catch (e) {

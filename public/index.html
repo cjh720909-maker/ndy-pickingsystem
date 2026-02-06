@@ -158,37 +158,75 @@
                 <!-- Level 3: Consolidated Table Headers -->
                 <div class="bg-slate-100 text-slate-500 font-bold text-[11px] uppercase tracking-wider border-t">
                     <!-- Dispatch Header -->
-                    <div id="dispatch-header" class="view-content active flex px-6 py-2">
+                    <div id="dispatch-header" class="view-content active flex px-6 py-2 select-none">
                         <div class="w-[50px] flex-shrink-0">No.</div>
-                        <div class="w-[100px] flex-shrink-0">기사명</div>
-                        <div class="w-[150px] flex-shrink-0">배차명</div>
-                        <div class="w-[100px] flex-shrink-0 text-right">납품처</div>
-                        <div class="w-[100px] flex-shrink-0 text-right">피킹</div>
-                        <div class="w-[110px] flex-shrink-0 text-right">배차중량</div>
-                        <div class="w-[110px] shrink-0 text-right">적재중량</div>
+                        <div data-sort="driverName" onclick="handleSort('dispatch', 'driverName', 'string')"
+                            class="w-[100px] flex-shrink-0 cursor-pointer hover:text-indigo-600 transition-colors">기사명
+                        </div>
+                        <div data-sort="dispatchName" onclick="handleSort('dispatch', 'dispatchName', 'string')"
+                            class="w-[150px] flex-shrink-0 cursor-pointer hover:text-indigo-600 transition-colors">배차명
+                        </div>
+                        <div data-sort="destCount" onclick="handleSort('dispatch', 'destCount', 'number')"
+                            class="w-[100px] flex-shrink-0 text-right cursor-pointer hover:text-indigo-600 transition-colors">
+                            납품처</div>
+                        <div data-sort="totalCount" onclick="handleSort('dispatch', 'totalCount', 'number')"
+                            class="w-[100px] flex-shrink-0 text-right cursor-pointer hover:text-indigo-600 transition-colors">
+                            피킹</div>
+                        <div data-sort="totalWeight" onclick="handleSort('dispatch', 'totalWeight', 'number')"
+                            class="w-[110px] flex-shrink-0 text-right cursor-pointer hover:text-indigo-600 transition-colors">
+                            배차중량</div>
+                        <div data-sort="maxWeight" onclick="handleSort('dispatch', 'maxWeight', 'number')"
+                            class="w-[110px] shrink-0 text-right cursor-pointer hover:text-indigo-600 transition-colors">
+                            적재중량</div>
                         <div class="w-[90px] flex-shrink-0 text-right">적재율</div>
                         <div class="flex-grow text-center">점유율</div>
                     </div>
-                    <div id="picking-header" class="view-content flex px-6 py-2">
+                    <div id="picking-header" class="view-content flex px-6 py-2 select-none">
                         <div class="w-[50px] flex-shrink-0 text-center">No.</div>
-                        <div class="w-[200px] flex-shrink-0">피킹 분류명</div>
-                        <div class="w-[80px] flex-shrink-0 text-center">DAS</div>
-                        <div class="w-[130px] flex-shrink-0 text-right">피킹 건수</div>
-                        <div class="w-[140px] flex-shrink-0 text-right">총 수량</div>
-                        <div class="w-[140px] flex-shrink-0 text-right">총 중량</div>
+                        <div data-sort="className" onclick="handleSort('picking', 'className', 'string')"
+                            class="w-[200px] flex-shrink-0 cursor-pointer hover:text-indigo-600 transition-colors">피킹
+                            분류명</div>
+                        <div data-sort="isDas" onclick="handleSort('picking', 'isDas', 'string')"
+                            class="w-[80px] flex-shrink-0 text-center cursor-pointer hover:text-indigo-600 transition-colors">
+                            DAS</div>
+                        <div data-sort="pickCount" onclick="handleSort('picking', 'pickCount', 'number')"
+                            class="w-[130px] flex-shrink-0 text-right cursor-pointer hover:text-indigo-600 transition-colors">
+                            피킹 건수</div>
+                        <div data-sort="totalQty" onclick="handleSort('picking', 'totalQty', 'number')"
+                            class="w-[140px] flex-shrink-0 text-right cursor-pointer hover:text-indigo-600 transition-colors">
+                            총 수량</div>
+                        <div data-sort="totalWeight" onclick="handleSort('picking', 'totalWeight', 'number')"
+                            class="w-[140px] flex-shrink-0 text-right cursor-pointer hover:text-indigo-600 transition-colors">
+                            총 중량</div>
                         <div class="flex-grow text-center">비중</div>
                     </div>
                     <!-- Analysis Header -->
-                    <div id="analysis-header" class="view-content flex px-6 py-2">
+                    <div id="analysis-header" class="view-content flex px-6 py-2 select-none">
                         <div class="w-[50px] flex-shrink-0 text-center">No.</div>
-                        <div class="w-[130px] flex-shrink-0">피킹그룹</div>
-                        <div class="w-[150px] flex-shrink-0">배차명</div>
-                        <div class="w-[80px] flex-shrink-0 text-center">도크</div>
-                        <div class="w-[100px] flex-shrink-0 text-right">박스</div>
-                        <div class="w-[100px] flex-shrink-0 text-right">낱개</div>
-                        <div class="w-[100px] flex-shrink-0 text-right">피킹</div>
-                        <div class="w-[110px] flex-shrink-0 text-right">총수량</div>
-                        <div class="w-[110px] flex-shrink-0 text-right">총중량</div>
+                        <div data-sort="groupName" onclick="handleSort('analysis', 'groupName', 'string')"
+                            class="w-[130px] flex-shrink-0 cursor-pointer hover:text-indigo-600 transition-colors">피킹그룹
+                        </div>
+                        <div data-sort="driverName" onclick="handleSort('analysis', 'driverName', 'string')"
+                            class="w-[150px] flex-shrink-0 cursor-pointer hover:text-indigo-600 transition-colors">배차명
+                        </div>
+                        <div data-sort="dockNo" onclick="handleSort('analysis', 'dockNo', 'string')"
+                            class="w-[80px] flex-shrink-0 text-center cursor-pointer hover:text-indigo-600 transition-colors">
+                            도크</div>
+                        <div data-sort="totalBoxes" onclick="handleSort('analysis', 'totalBoxes', 'number')"
+                            class="w-[100px] flex-shrink-0 text-right cursor-pointer hover:text-indigo-600 transition-colors">
+                            박스</div>
+                        <div data-sort="totalItems" onclick="handleSort('analysis', 'totalItems', 'number')"
+                            class="w-[100px] flex-shrink-0 text-right cursor-pointer hover:text-indigo-600 transition-colors">
+                            낱개</div>
+                        <div data-sort="pickCount" onclick="handleSort('analysis', 'pickCount', 'number')"
+                            class="w-[100px] flex-shrink-0 text-right cursor-pointer hover:text-indigo-600 transition-colors">
+                            피킹</div>
+                        <div data-sort="totalQty" onclick="handleSort('analysis', 'totalQty', 'number')"
+                            class="w-[110px] flex-shrink-0 text-right cursor-pointer hover:text-indigo-600 transition-colors">
+                            총수량</div>
+                        <div data-sort="totalWeight" onclick="handleSort('analysis', 'totalWeight', 'number')"
+                            class="w-[110px] flex-shrink-0 text-right cursor-pointer hover:text-indigo-600 transition-colors">
+                            총중량</div>
                         <div class="flex-grow text-center">비중</div>
                     </div>
                 </div>

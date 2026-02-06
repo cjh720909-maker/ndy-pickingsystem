@@ -27,6 +27,10 @@ async function fetchDispatchData() {
             return;
         }
 
+        // 정렬을 위해 데이터 저장
+        window.appState.dispatchData = json.data;
+        window.appState.dispatchSummary = json.summary;
+
         renderDispatchData(json, tbody, cards);
     } catch (e) {
         console.error(e);

@@ -1,5 +1,5 @@
 {
-  "name": "ndy-dispatch-summary",
+  "name": "ndy-pickingsystem",
   "version": "1.0.0",
   "description": "NDY Dispatch & Picking Summary Dashboard",
   "main": "api/index.js",
