@@ -285,7 +285,7 @@ app.get('/api/dispatch-status', async (req, res) => {
             FROM t_balju 
             ${whereClause} 
             GROUP BY B_DATE, B_C_NAME
-            ORDER BY B_QTY ASC 
+            ORDER BY B_QTY ASC, B_KG ASC 
             LIMIT 1000`;
         const [rows] = await mysqlConn.execute(query, params);
 
