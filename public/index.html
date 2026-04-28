@@ -53,6 +53,40 @@
             border-collapse: separate;
             border-spacing: 0;
         }
+
+        @media print {
+            body {
+                background: white !important;
+            }
+            aside, header, .level-1-filter, .summary-row, #loading-header, .print\:hidden, #page-title {
+                display: none !important;
+            }
+            .view-content.active {
+                display: block !important;
+            }
+            .print-area {
+                width: 100% !important;
+                min-height: auto !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+                page-break-after: always;
+            }
+            .print-area:last-child {
+                page-break-after: auto;
+            }
+            /* 숨길 요소들 추가 */
+            .border-t, .bg-slate-100 {
+                border: none !important;
+                background: white !important;
+            }
+            .max-w-full.px-4.mx-auto.divide-y.divide-slate-100 > div:first-child,
+            .max-w-full.px-4.mx-auto.divide-y.divide-slate-100 > div:nth-child(2),
+            .max-w-full.px-4.mx-auto.divide-y.divide-slate-100 > div:nth-child(3) {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -64,6 +98,15 @@
             🚚 Antigravity
         </div>
         <div class="p-4 space-y-2 flex-grow">
+            <div onclick="switchView('status')" id="menu-status"
+                class="sidebar-item w-full flex items-center px-4 py-3 rounded-xl font-medium text-left">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 17v-2a4 4 0 00-4-4H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                    </path>
+                </svg>
+                배차 현황 (MySQL 원본)
+            </div>
             <div onclick="switchView('dispatch')" id="menu-dispatch"
                 class="sidebar-item w-full flex items-center px-4 py-3 rounded-xl font-medium text-left">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,14 +135,23 @@
                 </svg>
                 피킹 분석 리포트
             </div>
-            <div onclick="switchView('status')" id="menu-status"
+            <div onclick="switchView('loading')" id="menu-loading"
                 class="sidebar-item w-full flex items-center px-4 py-3 rounded-xl font-medium text-left">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 17v-2a4 4 0 00-4-4H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
-                    </path>
+                        d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path>
                 </svg>
-                배차 현황 (MySQL 원본)
+                상차리스트
+            </div>
+            <div onclick="switchView('loadingLandscape')" id="menu-loadingLandscape"
+                class="sidebar-item w-full flex items-center px-4 py-3 rounded-xl font-medium text-left">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+                상차리스트(가로)
             </div>
         </div>
         <div class="p-4 text-xs text-indigo-400 text-center">
@@ -160,32 +212,29 @@
                     </div>
                     <div class="flex items-center gap-2">
                         <button onclick="fetchData()"
-                            class="px-4 py-1.5 bg-indigo-600 text-white rounded font-bold text-xs hover:bg-indigo-700 whitespace-nowrap">조회</button>
-                        <button id="syncBtn" onclick="syncData()"
-                            class="px-3 py-1.5 bg-slate-200 text-slate-700 rounded font-bold text-xs hover:bg-slate-300 whitespace-nowrap border border-slate-300 flex items-center gap-1.5"
-                            title="최근 14일 데이터를 원본(MySQL)에서 가져옵니다.">
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
-                                </path>
-                            </svg>
-                            데이터 동기화
+                            class="px-4 py-1.5 bg-indigo-600 text-white rounded font-bold text-xs hover:bg-indigo-700 whitespace-nowrap shadow-sm">조회</button>
+                        <button id="printBtn" onclick="window.print()" style="display: none;"
+                            class="px-4 py-1.5 bg-slate-800 text-white rounded font-bold text-xs hover:bg-slate-900 flex items-center gap-1.5 whitespace-nowrap shadow-sm">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                            인쇄하기
                         </button>
                     </div>
                 </div>
 
                 <!-- Level 2: Summary Chips Area (Horizontal Flex Only) -->
                 <div class="px-6 py-2 bg-white">
-                    <div id="dispatch-summaryCards" class="view-content active summary-row active"></div>
+                    <div id="dispatch-summaryCards" class="view-content summary-row"></div>
                     <div id="picking-summaryCards" class="view-content summary-row"></div>
                     <div id="analysis-summaryCards" class="view-content summary-row"></div>
-                    <div id="status-summaryCards" class="view-content summary-row active !hidden"></div>
+                    <div id="loading-summaryCards" class="view-content summary-row"></div>
+                    <div id="loadingLandscape-summaryCards" class="view-content summary-row"></div>
+                    <div id="status-summaryCards" class="view-content summary-row active"></div>
                 </div>
 
                 <!-- Level 3: Consolidated Table Headers -->
                 <div class="bg-slate-100 text-slate-500 font-bold text-[11px] uppercase tracking-wider border-t">
                     <!-- Dispatch Header -->
-                    <div id="dispatch-header" class="view-content active flex px-6 py-2 select-none">
+                    <div id="dispatch-header" class="view-content flex px-6 py-2 select-none">
                         <div class="w-[50px] flex-shrink-0">No.</div>
                         <div data-sort="driverName" onclick="handleSort('dispatch', 'driverName', 'string')"
                             class="w-[100px] flex-shrink-0 cursor-pointer hover:text-indigo-600 transition-colors">기사명
@@ -258,7 +307,7 @@
                     </div>
                     <!-- Status Header -->
                     <div id="status-header"
-                        class="view-content flex px-6 py-2 select-none overflow-x-auto no-scrollbar">
+                        class="view-content active flex px-6 py-2 select-none overflow-x-auto no-scrollbar">
                         <div class="w-[50px] flex-shrink-0 text-center">No.</div>
                         <div class="flex-grow text-slate-400 font-normal italic">데이터를 조회하면 컬럼이 자동으로 표시됩니다.</div>
                     </div>
@@ -271,7 +320,7 @@
             <div class="max-w-full mx-auto">
 
                 <!-- Dispatch View Container -->
-                <div id="view-dispatch" class="view-content active">
+                <div id="view-dispatch" class="view-content">
                     <div class="bg-white border rounded shadow-sm overflow-hidden">
                         <table class="w-full text-left text-sm table-fixed">
                             <tbody id="dispatch-tableBody" class="divide-y text-slate-600">
@@ -309,8 +358,22 @@
                     </div>
                 </div>
 
+                <!-- Loading View Container -->
+                <div id="view-loading" class="view-content">
+                    <div id="loading-pages-container" class="bg-slate-100">
+                        <div class="p-8 text-center text-slate-400 bg-white border rounded shadow-sm">데이터를 조회해주세요.</div>
+                    </div>
+                </div>
+
+                <!-- Loading Landscape View Container -->
+                <div id="view-loadingLandscape" class="view-content">
+                    <div id="loadingLandscape-pages-container" class="bg-slate-100">
+                        <div class="p-8 text-center text-slate-400 bg-white border rounded shadow-sm">데이터를 조회해주세요.</div>
+                    </div>
+                </div>
+
                 <!-- Status View Container -->
-                <div id="view-status" class="view-content">
+                <div id="view-status" class="view-content active">
                     <div class="bg-white border rounded shadow-sm overflow-x-auto">
                         <table class="min-w-full text-left text-sm whitespace-nowrap">
                             <tbody id="status-tableBody" class="divide-y text-slate-600">
@@ -364,6 +427,8 @@
     <script src="/dispatch.js"></script>
     <script src="/picking.js"></script>
     <script src="/analysis.js"></script>
+    <script src="/loading.js"></script>
+    <script src="/loading_landscape.js"></script>
     <script src="/status.js"></script>
     <script>
         let currentView = 'dispatch';
@@ -383,6 +448,8 @@
                 'dispatch': '배차 요약 리포트',
                 'picking': '피킹 요약 리포트',
                 'analysis': '피킹 분석 리포트',
+                'loading': '상차리스트',
+                'loadingLandscape': '상차리스트(가로)',
                 'status': '배차 현황 (MySQL)'
             };
             document.getElementById('page-title').innerText = pageTitles[view];
@@ -395,9 +462,22 @@
 
             // Hide all filter groups first
             [driverFilter, statusFilter, customerFilter, analysisFilter].forEach(el => el.style.display = 'none');
+            
+            const printBtn = document.getElementById('printBtn');
+            if (printBtn) printBtn.style.display = (view === 'loading' || view === 'loadingLandscape') ? 'flex' : 'none';
 
-            // Set default sync button visibility
-            document.getElementById('syncBtn').style.display = 'flex';
+            // 페이지 방향 제어 (가로/세로)
+            let pageStyle = document.getElementById('page-orientation-style');
+            if (!pageStyle) {
+                pageStyle = document.createElement('style');
+                pageStyle.id = 'page-orientation-style';
+                document.head.appendChild(pageStyle);
+            }
+            if (view === 'loadingLandscape') {
+                pageStyle.innerHTML = '@page { size: landscape; }';
+            } else {
+                pageStyle.innerHTML = '@page { size: portrait; }';
+            }
 
             if (view === 'dispatch') {
                 driverFilter.style.display = 'flex';
@@ -406,10 +486,11 @@
                 customerFilter.style.display = 'flex';
             } else if (view === 'analysis') {
                 analysisFilter.style.display = 'flex';
+            } else if (view === 'loading' || view === 'loadingLandscape') {
+                driverFilter.style.display = 'flex';
             } else if (view === 'status') {
                 statusFilter.style.display = 'flex';
                 customerFilter.style.display = 'flex';
-                document.getElementById('syncBtn').style.display = 'none'; // MySQL 직접조회는 동기화 불필요
             }
 
             // Summary & Header control
@@ -432,6 +513,8 @@
             if (currentView === 'dispatch') fetchDispatchData();
             else if (currentView === 'picking') fetchPickingData();
             else if (currentView === 'analysis') fetchAnalysisData();
+            else if (currentView === 'loading') fetchLoadingData();
+            else if (currentView === 'loadingLandscape') fetchLoadingLandscapeData();
             else fetchStatusData();
         }
 
@@ -440,7 +523,9 @@
             const path = window.location.pathname;
             if (path.includes('analysis')) switchView('analysis');
             else if (path.includes('picking')) switchView('picking');
-            else switchView('dispatch');
+            else if (path.includes('loading')) switchView('loading');
+            else if (path.includes('dispatch')) switchView('dispatch');
+            else switchView('status');
         };
 
         // Enter key listener
