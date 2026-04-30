@@ -92,24 +92,36 @@ function renderLoadingData(data, summary, searchDriver, printDate) {
                 isFirstOfCustomer = true;
             }
 
-            const borderClass = isFirstOfCustomer ? 'border-t-2 border-black' : 'border-t border-dashed border-slate-400';
-            const customerDisplay = isFirstOfCustomer ? `<div class="font-bold truncate" title="${row.customerName}">${row.customerName}</div>` : '';
+            const borderClass = isFirstOfCustomer ? 'border-t-2 border-black' : 'border-t border-slate-300';
+            
+            const fullBarcode = row.barcode || '';
+
+            // Checkbox state
+            const showBarcode = document.getElementById('showBarcodeCheck')?.checked || false;
+
+            let customerDisplay = '';
+            if (isFirstOfCustomer) {
+                customerDisplay = `<div class="font-bold truncate" title="${row.customerName}">${row.customerName}</div>`;
+            } else {
+                if (showBarcode && fullBarcode) {
+                    customerDisplay = `<div class="text-[11px] text-slate-500 font-mono tracking-wider pt-0.5">${fullBarcode}</div>`;
+                }
+            }
 
             const boxStr = row.boxes > 0 ? row.boxes : '';
             const pieceStr = row.pieces > 0 ? row.pieces : '';
             
-            const fullBarcode = row.barcode || '';
-            const shortBarcode = fullBarcode.length > 7 ? fullBarcode.slice(-7) : fullBarcode;
+            const isSpecialClass = row.pickingClass && (row.pickingClass.includes('냉동') || row.pickingClass.includes('콩나물'));
+            const extraBoldClass = isSpecialClass ? 'font-bold' : '';
 
             tableRowsHtml += `
                 <tr class="${borderClass} hover:bg-slate-50 transition-colors">
-                    <td class="w-[150px] border-r border-slate-300 px-1 py-1 align-top">${customerDisplay}</td>
-                    <td class="border-r border-slate-300 px-1 py-1 truncate" title="${row.productName}">${row.productName}</td>
-                    <td class="w-[65px] text-center border-r border-slate-300 px-1 py-1" title="${fullBarcode}">${shortBarcode}</td>
+                    <td class="w-[180px] border-r border-slate-300 px-1 py-1 align-top">${customerDisplay}</td>
+                    <td class="border-r border-slate-300 px-1 py-1 truncate ${extraBoldClass}" title="${row.productName}">${row.productName}</td>
                     <td class="w-[55px] text-right border-r border-slate-300 px-1 py-1">${boxStr}</td>
                     <td class="w-[55px] text-right border-r border-slate-300 px-1 py-1">${pieceStr}</td>
                     <td class="w-[55px] text-right border-r border-slate-300 px-1 py-1">${row.totalQty.toLocaleString()}</td>
-                    <td class="w-[55px] text-center px-1 py-1">${row.pickingClass}</td>
+                    <td class="w-[75px] text-center px-1 py-1 ${extraBoldClass}">${row.pickingClass}</td>
                 </tr>
             `;
         });
@@ -134,13 +146,12 @@ function renderLoadingData(data, summary, searchDriver, printDate) {
                 <table class="w-full text-left text-[13px] border-collapse" style="table-layout: fixed;">
                     <thead class="border-y-2 border-black bg-slate-50 text-center font-bold text-slate-800">
                         <tr>
-                            <th class="w-[150px] border-r border-slate-300 py-1">거래처</th>
+                            <th class="w-[180px] border-r border-slate-300 py-1">거래처</th>
                             <th class="border-r border-slate-300 py-1">제품명</th>
-                            <th class="w-[65px] border-r border-slate-300 py-1">바코드</th>
                             <th class="w-[55px] border-r border-slate-300 py-1">박스</th>
                             <th class="w-[55px] border-r border-slate-300 py-1">낱개</th>
                             <th class="w-[55px] border-r border-slate-300 py-1">총량</th>
-                            <th class="w-[55px] py-1">구분</th>
+                            <th class="w-[75px] py-1">구분</th>
                         </tr>
                     </thead>
                     <tbody class="text-black">

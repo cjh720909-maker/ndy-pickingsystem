@@ -343,7 +343,7 @@ app.get('/api/loading-list', async (req, res) => {
             LEFT JOIN t_car c ON BINARY b.CB_DRIVER = BINARY c.CB_DRIVER
             ${whereClause}
             GROUP BY b.B_C_NAME, b.B_P_NAME, p.P_BARCODE
-            ORDER BY b.B_C_NAME ASC, picking_class ASC, b.B_P_NAME ASC
+            ORDER BY MAX(b.CB_ADDRESS) ASC, b.B_C_NAME ASC, picking_class ASC, b.B_P_NAME ASC
         `;
 
         const [rows] = await mysqlConn.execute(query, params);

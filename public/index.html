@@ -190,6 +190,12 @@
                             <input type="text" id="searchInput" placeholder="기사명 또는 거래처명" value="서원유통"
                                 class="w-48 px-2 py-1 border rounded text-xs bg-white outline-none focus:ring-1 focus:ring-indigo-500">
                         </div>
+                        <div id="barcode-filter-group" class="hidden items-center gap-2 flex-shrink-0 pl-2 border-l border-slate-200">
+                            <label class="flex items-center gap-1.5 cursor-pointer text-xs font-bold text-slate-600">
+                                <input type="checkbox" id="showBarcodeCheck" class="w-3.5 h-3.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" onchange="fetchData()">
+                                바코드 표시
+                            </label>
+                        </div>
                         <div id="analysis-filter-group" class="hidden items-center gap-2 flex-shrink-0">
                             <span class="text-[10px] font-bold text-slate-400 whitespace-nowrap">그룹</span>
                             <select id="analysisSelect"
@@ -459,9 +465,12 @@
             const statusFilter = document.getElementById('status-filter-group');
             const customerFilter = document.getElementById('customer-filter-group');
             const analysisFilter = document.getElementById('analysis-filter-group');
+            const barcodeFilter = document.getElementById('barcode-filter-group');
 
             // Hide all filter groups first
-            [driverFilter, statusFilter, customerFilter, analysisFilter].forEach(el => el.style.display = 'none');
+            [driverFilter, statusFilter, customerFilter, analysisFilter, barcodeFilter].forEach(el => {
+                if (el) el.style.display = 'none';
+            });
             
             const printBtn = document.getElementById('printBtn');
             if (printBtn) printBtn.style.display = (view === 'loading' || view === 'loadingLandscape') ? 'flex' : 'none';
@@ -488,6 +497,7 @@
                 analysisFilter.style.display = 'flex';
             } else if (view === 'loading' || view === 'loadingLandscape') {
                 driverFilter.style.display = 'flex';
+                if (barcodeFilter) barcodeFilter.style.display = 'flex';
             } else if (view === 'status') {
                 statusFilter.style.display = 'flex';
                 customerFilter.style.display = 'flex';
